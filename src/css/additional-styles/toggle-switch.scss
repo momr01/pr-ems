@@ -22,7 +22,8 @@
         &:checked {
 
             + label {
-                @apply bg-primary;
+                // @apply bg-primary;
+                @apply bg-green;
 
                 > span:first-child {
                     left: 22px;
