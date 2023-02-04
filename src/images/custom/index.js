@@ -1,4 +1,4 @@
-import LoginBg from "./bg.png";
+import LoginBg from "./login-bg.png";
 import EMSLogo from "./ems-logo.png";
 import EMSLogoIcon from "./ems-logo-removebg-preview.png";
 import UsaFlag from "./usa.png";
