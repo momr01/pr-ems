@@ -3,7 +3,7 @@ import { Kpis, Layout } from "../../components/custom";
 import DateSelect from "../../components/DateSelect";
 import DashboardCard08 from "../../partials/dashboard/DashboardCard08";
 
-const Home = () => {
+const Dashboard = () => {
   const [companySetting, setCompanySetting] = useState(true);
 
   return (
@@ -231,4 +231,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Dashboard;

@@ -34,7 +34,7 @@ function Header({ sidebarOpen, setSidebarOpen }) {
               </svg>
             </button>
 
-            <div className="mr-5">
+            <div className="mr-5 hidden lg:block">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="icon icon-tabler icon-tabler-menu-2"
@@ -54,13 +54,13 @@ function Header({ sidebarOpen, setSidebarOpen }) {
               </svg>
             </div>
 
-            <button className="flex">
+            <button className="flex ml-5 lg:ml-0">
               {/* <img src={images.UsaFlag} alt="english" /> */}
               <div className="w-[30px] h-[30px] rounded-[50%] mr-3">
                 <img src={images.UsaFlag} />
 
               </div>
-              <span className="text-black text-lg">English</span>
+              <span className="text-black text-lg hidden md:block">English</span>
             </button>
           </div>
 
