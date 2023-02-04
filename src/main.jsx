@@ -1,5 +1,6 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+// import ReactDOM from "react-dom/client";
+import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import App from "./App";
 
@@ -10,11 +11,12 @@ import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
 
 //const root = ReactDOM.createRoot(document.getElementById("root"));
-const root = ReactDOM.createRoot(document.getElementById("root"));
+// const root = ReactDOM.createRoot(document.getElementById("root"));
 
 let persistor = persistStore(store);
 
-root.render(
+//root.render(
+  ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate persistor={persistor}>
@@ -25,5 +27,6 @@ root.render(
         </Router>
       </PersistGate>
     </Provider>
-  </React.StrictMode>
+  </React.StrictMode>,
+   document.getElementById('root')
 );
