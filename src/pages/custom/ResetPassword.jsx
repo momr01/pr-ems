@@ -104,7 +104,7 @@ const ResetPassword = () => {
               </div>
             </div>
 
-            <div className="mx-auto py-8 w-[60%]">
+            <div className="mx-auto py-8 w-[90%] md:w-[80%] lg:w-[60%]">
               <div className="mb-5">
                 <img src={images.EMSLogoIcon} alt="logo" className="h-16" />
               </div>

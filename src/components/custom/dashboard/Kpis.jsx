@@ -39,7 +39,7 @@ function Kpis() {
       <div className="max-w-full mx-4 py-0 sm:mx-auto sm:px-6 lg:px-0">
         <div className="sm:flex sm:space-x-4">
           {/* {!LoadingNumberOrders ? ( */}
-          <section className="inline-block align-bottom rounded-lg border-slate-300 border-r text-left overflow-hidden mb-4 w-full sm:w-1/3 sm:my-8">
+          <section className="inline-block align-bottom rounded-lg border-slate-300 md:border-r text-left overflow-hidden mb-4 w-full sm:w-1/3 sm:my-8">
             <div className="bg-white">
               <div className="sm:flex sm:items-start">
                 <div className="text-center sm:mt-0 sm:ml-2 sm:text-left">
@@ -65,7 +65,7 @@ function Kpis() {
           )} */}
 
           {/* {!loadingAmountOrders ? ( */}
-          <section className="inline-block align-bottom rounded-lg border-slate-300 border-r text-left overflow-hidden mb-4 w-full sm:w-1/3 sm:my-8">
+          <section className="inline-block align-bottom rounded-lg border-slate-300 md:border-r text-left overflow-hidden mb-4 w-full sm:w-1/3 sm:my-8">
             <div className="bg-white">
               <div className="sm:flex sm:items-start">
                 <div className="text-center sm:mt-0 sm:ml-2 sm:text-left">
@@ -81,7 +81,7 @@ function Kpis() {
                   {/* ) : (
                       <p className="text-3xl font-bold text-black">Sin datos</p>
                     )} */}
-                    <p className="text-min font-bold">+ 11,706.00 (22.26%)</p>
+                    <p className="text-min font-bold">- 11,706.00 (22.26%)</p>
                 </div>
               </div>
             </div>
@@ -91,7 +91,7 @@ function Kpis() {
           )} */}
 
           {/* {!loadingOrdersProgrammed ? ( */}
-          <section className="inline-block align-bottom rounded-lg border-slate-300 border-r text-left overflow-hidden mb-4 w-full sm:w-1/3 sm:my-8">
+          <section className="inline-block align-bottom rounded-lg border-slate-300 md:border-r text-left overflow-hidden mb-4 w-full sm:w-1/3 sm:my-8">
             <div className="bg-white">
               <div className="sm:flex sm:items-start">
                 <div className="text-center sm:mt-0 sm:ml-2 sm:text-left">
@@ -107,7 +107,7 @@ function Kpis() {
                   {/* ) : (
                       <p className="text-3xl font-bold text-black">Sin datos</p>
                     )} */}
-                    <p className="text-min font-bold">+ 11,706.00 (22.26%)</p>
+                    <p className="text-min font-bold">- 11,706.00 (22.26%)</p>
                 </div>
               </div>
             </div>
@@ -133,7 +133,7 @@ function Kpis() {
                   {/* ) : (
                       <p className="text-3xl font-bold text-black">Sin datos</p>
                     )} */}
-                    <p className="text-min font-bold">+ 11,706.00 (22.26%)</p>
+                    <p className="text-min font-bold">- 11,706.00 (22.26%)</p>
                 </div>
               </div>
             </div>

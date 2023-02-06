@@ -183,21 +183,21 @@ const Maintenance = () => {
 
         <section className="flex flex-col col-span-full sm:col-span-7 bg-white shadow-lg rounded-sm border border-slate-200 p-5">
           <div className="flex mb-5">
-            <div className="w-1/3 flex border-r-2 border-slate-500 justify-between px-2 relative">
+            <div className="w-1/3 flex flex-col md:flex-row border-r-2 border-slate-500 justify-between px-2 relative">
               <p className="text-red-500 text-4xl font-medium">03</p>
-              <p className="text-black text-base absolute right-2 bottom-1">
+              <p className="text-black text-xs md:text-base md:absolute md:right-2 md:bottom-1">
                 System Error
               </p>
             </div>
-            <div className="w-1/3 flex border-r-2 border-slate-500 justify-between px-2 relative">
+            <div className="w-1/3 flex flex-col md:flex-row border-r-2 border-slate-500 justify-between px-2 relative">
               <p className="text-yellow-500 text-4xl font-medium">02</p>
-              <p className="text-black text-base absolute right-2 bottom-1">
+              <p className="text-black text-xs md:text-base md:absolute md:right-2 md:bottom-1">
                 Maintenance
               </p>
             </div>
-            <div className="w-1/3 flex justify-between px-2 relative">
+            <div className="w-1/3 flex flex-col md:flex-row justify-between px-2 relative">
               <p className="text-slate-800 text-4xl font-medium mr-5">11</p>
-              <p className="text-black text-base absolute right-2 bottom-1">
+              <p className="text-black text-xs md:text-base md:absolute md:right-2 md:bottom-1">
                 Not Connected
               </p>
             </div>

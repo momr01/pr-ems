@@ -8,9 +8,9 @@ const Dashboard = () => {
 
   return (
     <Layout section="Dashboard" obs="Overview">
-      <section className="mb-5 flex justify-between">
-        <div className="flex">
-          <div className="mr-5">
+      <section className="mb-5 flex flex-col md:flex-row justify-between">
+        <div className="flex flex-col md:flex-row">
+          <div className="md:mr-5 mb-2 md:mb-0">
             <label
               className="block text-base font-medium mb-1 text-black"
               htmlFor="card-country"
@@ -19,19 +19,19 @@ const Dashboard = () => {
             </label>
             <select
               id="card-country"
-              className="form-select h-10 bg-slate-300 text-black"
+              className="form-select h-10 bg-slate-300 text-black w-full md:w-auto"
             >
               <option>TicTac</option>
               <option>CSV</option>
               <option>Excel</option>
             </select>
           </div>
-          <div className="mr-5">
+          <div className="md:mr-5 mb-2 md:mb-0">
             <p className="mb-1 font-medium text-base text-black">Period</p>
             <DateSelect />
           </div>
-          <div className="relative">
-            <button className="bg-primary absolute bottom-0 h-10 text-white px-5 text-base flex items-center">
+          <div className="relative mb-2 md:mb-0">
+            <button className="bg-primary md:absolute md:bottom-0 h-10 text-white px-5 text-base flex items-center w-full md:w-auto justify-center">
               <span className="mr-1">Update</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +54,7 @@ const Dashboard = () => {
         <div className="relative">
           <select
             id="card-country"
-            className="form-select absolute right-0 bottom-0 h-10 bg-slate-300 text-black"
+            className="form-select md:absolute md:right-0 md:bottom-0 h-10 bg-slate-300 text-black w-full md:w-auto"
           >
             <option>Export</option>
             <option>CSV</option>

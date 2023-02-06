@@ -13,8 +13,8 @@ const Layout = ({ section, obs, children }) => {
         <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
         <main>
           <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
-            <div className="flex justify-between pb-5 border-b-2 mb-5">
-              <h2 className="font-bold text-black text-2xl">{section}</h2>
+            <div className="flex flex-col md:flex-row md:justify-between pb-5 border-b-2 mb-5">
+              <h2 className="font-bold text-black text-2xl mb-2 md:mb-0">{section}</h2>
               <p className="text-black text-xl">
                 <span className="text-primary">{section}</span> / {obs}
               </p>
