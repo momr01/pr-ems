@@ -148,6 +148,9 @@ function DropdownNotifications({ align }) {
               </Link>
             </li>
           </ul>
+          {/* <div className="text-xs font-semibold text-slate-400 uppercase pt-1.5 pb-2 px-4 text-right">
+            <Link to="/">See more</Link>
+          </div> */}
         </div>
       </Transition>
     </div>

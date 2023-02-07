@@ -6,6 +6,7 @@ import UserAvatar from "../images/user-avatar-32.png";
 import { logOut } from "../auth/authSlice";
 import { useDispatch } from "react-redux";
 import images from "../images/custom";
+import routes from "../helpers/routes";
 
 function DropdownProfile({ align }) {
   const dispatch = useDispatch();
@@ -92,10 +93,10 @@ function DropdownProfile({ align }) {
             <li>
               <Link
                 className="font-medium text-sm text-primary hover:text-indigo-600 flex items-center py-1 px-3"
-                to="/settings"
+                to={routes.profile}
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               >
-                Settings
+                Edit Profile
               </Link>
             </li>
             <li>
@@ -110,7 +111,7 @@ function DropdownProfile({ align }) {
                 onClick={() => dispatch(logOut())}
                 className="font-medium text-sm text-primary hover:text-indigo-600 flex items-center py-1 px-3"
               >
-                Sign Out
+                Logout
               </button>
             </li>
           </ul>

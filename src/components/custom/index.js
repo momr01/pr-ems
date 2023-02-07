@@ -1,2 +1,10 @@
 export { default as Layout } from "./Layout";
 export { default as Kpis } from "./dashboard/Kpis";
+export { default as Sidebar } from "./profile/Sidebar";
+export { default as Panel } from "./profile/Panel";
+export { default as Notifications } from "./profile/Notifications";
+export { default as DateSelect } from "./DateSelect";
+export { default as Transition } from "./Transition";
+export { default as FilterButton } from "./FilterButton";
+export { default as OrdersTable } from "./orders/OrdersTable";
+export { default as OrdersTableItem } from "./orders/OrdersTableItem";

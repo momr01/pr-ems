@@ -4,3 +4,8 @@ export { default as NotFound } from "./NotFound";
 export { default as Maintenance } from "./Maintenance";
 export { default as ResetPassword } from "./ResetPassword";
 export { default as Reports } from "./Reports";
+export { default as AddUser } from "./AddUser";
+export { default as AddPlant } from "./AddPlant";
+export { default as AddShift } from "./AddWorkShift";
+export { default as ProfilePanel } from "./ProfilePanel";
+export { default as ProfileNotifications } from "./ProfileNotifications";

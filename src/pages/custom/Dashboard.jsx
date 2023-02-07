@@ -22,8 +22,9 @@ const Dashboard = () => {
               className="form-select h-10 bg-slate-300 text-black w-full md:w-auto"
             >
               <option>TicTac</option>
-              <option>CSV</option>
-              <option>Excel</option>
+              <option>Chocolate</option>
+              <option>Plastic</option>
+              <option>F&U</option>
             </select>
           </div>
           <div className="md:mr-5 mb-2 md:mb-0">

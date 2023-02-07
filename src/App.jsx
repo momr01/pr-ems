@@ -5,10 +5,15 @@ import "./css/style.scss";
 import "./charts/ChartjsConfig";
 
 import {
+  AddPlant,
+  AddShift,
+  AddUser,
   Dashboard,
   Login,
   Maintenance,
   NotFound,
+  ProfileNotifications,
+  ProfilePanel,
   Reports,
   ResetPassword,
 } from "./pages/custom";
@@ -97,6 +102,15 @@ function App() {
           <Route exact path={routes.dashboard} element={<Dashboard />} />
           <Route exact path={routes.maintenance} element={<Maintenance />} />
           <Route exact path={routes.reports} element={<Reports />} />
+          <Route exact path={routes.addUser} element={<AddUser />} />
+          <Route exact path={routes.addPlant} element={<AddPlant />} />
+          <Route exact path={routes.addShift} element={<AddShift />} />
+          <Route exact path={routes.profile} element={<ProfilePanel />} />
+          <Route
+            exact
+            path={routes.notifSettings}
+            element={<ProfileNotifications />}
+          />
         </Route>
 
         <Route path="*" element={<NotFound />} />
