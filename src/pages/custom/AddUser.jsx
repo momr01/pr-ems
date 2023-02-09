@@ -1,5 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Layout } from "../../components/custom";
+import routes from "../../helpers/routes";
 
 const AddUser = () => {
   // "email",
@@ -143,6 +145,15 @@ const AddUser = () => {
                 </div>
               </div>
               <div className="text-right">
+                <Link to={routes.users}>
+                  <button
+                    type="button"
+                    className="btn bg-gray-500 border-slate-200 hover:border-slate-300 text-white mr-5"
+                  >
+                    Cancel
+                  </button>
+                </Link>
+
                 <button
                   type="submit"
                   className="btn bg-primary border-slate-200 hover:border-slate-300 text-white"

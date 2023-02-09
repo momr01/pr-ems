@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Kpis, Layout } from "../../components/custom";
-import DateSelect from "../../components/DateSelect";
+import { Kpis, Layout, DateSelectDashboard } from "../../components/custom";
+// import DateSelect from "../../components/DateSelect";
 import {
-  //getPlanningList,
+  getPlanningList,
   selectCurrentToken,
 } from "../../features/auth/authSlice";
 import { useGetUsersQuery } from "../../features/users/usersSlice";
-import DashboardCard08 from "../../partials/dashboard/DashboardCard08";
+import { DashboardCard08 } from "../../partials/custom";
+// import DashboardCard08 from "../../partials/dashboard/DashboardCard08";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -16,17 +17,11 @@ const Dashboard = () => {
   const token = useSelector(selectCurrentToken);
   console.log(token);
 
-  const {
-    data,
-    isLoading,
-    isSuccess,
-    isError,
-    error,
-  } = useGetUsersQuery();
+  const { data, isLoading, isSuccess, isError, error } = useGetUsersQuery();
 
   console.log(error);
 
-  //dispatch(getPlanningList());
+  dispatch(getPlanningList());
 
   return (
     <Layout section="Dashboard" obs="Overview">
@@ -51,7 +46,7 @@ const Dashboard = () => {
           </div>
           <div className="md:mr-5 mb-2 md:mb-0">
             <p className="mb-1 font-medium text-base text-black">Period</p>
-            <DateSelect />
+            <DateSelectDashboard />
           </div>
           <div className="relative mb-2 md:mb-0">
             <button className="bg-primary md:absolute md:bottom-0 h-10 text-white px-5 text-base flex items-center w-full md:w-auto justify-center">

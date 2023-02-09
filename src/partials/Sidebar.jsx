@@ -571,14 +571,14 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                           <li className="mb-1 last:mb-0 py-5">
                             <NavLink
                               end
-                              to={routes.addUser}
+                              to={routes.users}
                               className={({ isActive }) =>
                                 "block text-slate-400 hover:text-slate-200 transition duration-150 truncate " +
                                 (isActive ? "bg-green !text-primary" : "")
                               }
                             >
                               <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200 pl-9">
-                                Add User
+                                Users
                               </span>
                             </NavLink>
                           </li>

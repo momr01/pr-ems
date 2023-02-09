@@ -1,5 +1,6 @@
 export { default as Layout } from "./Layout";
 export { default as Kpis } from "./dashboard/Kpis";
+export { default as DateSelectDashboard } from "./dashboard/DateSelect";
 export { default as Sidebar } from "./profile/Sidebar";
 export { default as Panel } from "./profile/Panel";
 export { default as Notifications } from "./profile/Notifications";

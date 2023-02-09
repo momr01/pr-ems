@@ -9,3 +9,4 @@ export { default as AddPlant } from "./AddPlant";
 export { default as AddShift } from "./AddWorkShift";
 export { default as ProfilePanel } from "./ProfilePanel";
 export { default as ProfileNotifications } from "./ProfileNotifications";
+export { default as Users } from "./Users";

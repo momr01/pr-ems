@@ -2,7 +2,8 @@ import { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 
 import "./css/style.scss";
-import "./charts/ChartjsConfig";
+// import "./charts/ChartjsConfig";
+import "./charts/custom/ChartjsConfig";
 
 import {
   AddPlant,
@@ -16,6 +17,7 @@ import {
   ProfilePanel,
   Reports,
   ResetPassword,
+  Users,
 } from "./pages/custom";
 import PublicRoute from "./routers/PublicRoute";
 import PrivateRoute from "./routers/PrivateRoute";
@@ -33,65 +35,6 @@ function App() {
   return (
     <>
       <Routes>
-        {/* <Route
-          exact
-          path={routes.index}
-          element={
-            <PublicRoute>
-              <Login />
-            </PublicRoute>
-          }
-        /> */}
-
-        {/* <Route
-          exact
-          path={routes.resetPwd}
-          element={
-            <PublicRoute>
-              <ResetPassword />
-            </PublicRoute>
-          }
-        /> */}
-
-        {/* <Route
-          exact
-          path={routes.login}
-          element={
-            <PublicRoute>
-              <Login />
-            </PublicRoute>
-          }
-        /> */}
-
-        {/* <Route
-          exact
-          path={routes.dashboard}
-          element={
-            <PrivateRoute>
-              <Dashboard />
-            </PrivateRoute>
-          }
-        /> */}
-
-        {/* <Route
-          exact
-          path={routes.maintenance}
-          element={
-            <PrivateRoute>
-              <Maintenance />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          exact
-          path={routes.reports}
-          element={
-            <PrivateRoute>
-              <Reports />
-            </PrivateRoute>
-          }
-        /> */}
-
         <Route element={<PublicRoute />}>
           <Route exact path={routes.index} element={<Login />} />
           <Route exact path={routes.login} element={<Login />} />
@@ -102,6 +45,7 @@ function App() {
           <Route exact path={routes.dashboard} element={<Dashboard />} />
           <Route exact path={routes.maintenance} element={<Maintenance />} />
           <Route exact path={routes.reports} element={<Reports />} />
+          <Route exact path={routes.users} element={<Users />} />
           <Route exact path={routes.addUser} element={<AddUser />} />
           <Route exact path={routes.addPlant} element={<AddPlant />} />
           <Route exact path={routes.addShift} element={<AddShift />} />
