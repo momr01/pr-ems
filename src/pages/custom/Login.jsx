@@ -74,9 +74,12 @@ const Login = () => {
       return;
     }
 
-    //console.log({ user, pwd });
-    //dispatch(setCredentials({ user, accessToken: pwd }));
-    const json = {
+    /**
+     * 
+     * 
+     * good
+     * 
+     *  const json = {
       username: user,
       password: pwd,
     };
@@ -103,6 +106,12 @@ const Login = () => {
       }
       errRef.current.focus();
     }
+     * 
+     * 
+     */
+
+    console.log({ user, pwd });
+    dispatch(setCredentials({ user, accessToken: pwd }));
   };
 
   const handleUserInput = (e) => setUser(e.target.value);
