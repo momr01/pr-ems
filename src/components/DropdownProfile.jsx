@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Transition from "../utils/Transition";
 
 import UserAvatar from "../images/user-avatar-32.png";
-import { logOut } from "../auth/authSlice";
+import { logOut } from "../features/auth/authSlice";
 import { useDispatch } from "react-redux";
 import images from "../images/custom";
 import routes from "../helpers/routes";

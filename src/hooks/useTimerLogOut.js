@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useStopwatch } from "react-timer-hook";
-import { logOut } from "../auth/authSlice";
+import { logOut } from "../features/auth/authSlice";
 
 const useTimerLogOut = () => {
   const dispatch = useDispatch();

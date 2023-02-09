@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { Link, Navigate, Outlet, useLocation } from "react-router-dom";
-import { selectCurrentToken } from "../auth/authSlice";
+import { selectCurrentToken } from "../features/auth/authSlice";
 import routes from "../helpers/routes";
 
 // function PublicRoute({ children }) {

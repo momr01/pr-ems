@@ -1,10 +1,32 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Kpis, Layout } from "../../components/custom";
 import DateSelect from "../../components/DateSelect";
+import {
+  //getPlanningList,
+  selectCurrentToken,
+} from "../../features/auth/authSlice";
+import { useGetUsersQuery } from "../../features/users/usersSlice";
 import DashboardCard08 from "../../partials/dashboard/DashboardCard08";
 
 const Dashboard = () => {
+  const dispatch = useDispatch();
   const [companySetting, setCompanySetting] = useState(true);
+
+  const token = useSelector(selectCurrentToken);
+  console.log(token);
+
+  const {
+    data,
+    isLoading,
+    isSuccess,
+    isError,
+    error,
+  } = useGetUsersQuery();
+
+  console.log(error);
+
+  //dispatch(getPlanningList());
 
   return (
     <Layout section="Dashboard" obs="Overview">

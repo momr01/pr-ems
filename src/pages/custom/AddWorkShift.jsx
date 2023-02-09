@@ -12,7 +12,7 @@ const AddWorkShift = () => {
           <p>Please complete each input to create a new work shift</p>
         </header>
 
-        {/* <div>
+        <div>
           <form>
             <div className="space-y-4">
               <div className="md:flex space-y-4 md:space-y-0 md:space-x-4">
@@ -21,7 +21,7 @@ const AddWorkShift = () => {
                     className="block text-sm font-medium mb-1"
                     htmlFor="card-country"
                   >
-                    Username <span className="text-rose-500">*</span>
+                    Name <span className="text-rose-500">*</span>
                   </label>
                   <input
                     id="card-name"
@@ -34,86 +34,12 @@ const AddWorkShift = () => {
                     className="block text-sm font-medium mb-1"
                     htmlFor="card-country"
                   >
-                    Password <span className="text-rose-500">*</span>
+                    Schedule <span className="text-rose-500">*</span>
                   </label>
                   <input
                     id="card-surname"
                     className="form-input w-full h-12"
-                    type="password"
-                  />
-                </div>
-              </div>
-             
-              <div className="md:flex space-y-4 md:space-y-0 md:space-x-4">
-                <div className="flex-1">
-                  <label
-                    className="block text-sm font-medium mb-1"
-                    htmlFor="card-country"
-                  >
-                    First name <span className="text-rose-500">*</span>
-                  </label>
-                  <input
-                    id="card-address"
-                    className="form-input w-full h-12"
                     type="text"
-                  />
-                </div>
-                <div className="flex-1">
-                  <label
-                    className="block text-sm font-medium mb-1"
-                    htmlFor="card-country"
-                  >
-                    Last name <span className="text-rose-500">*</span>
-                  </label>
-                  <input
-                    id="card-city"
-                    className="form-input w-full h-12"
-                    type="text"
-                  />
-                </div>
-              </div>
-             
-              <div className="md:flex space-y-4 md:space-y-0 md:space-x-4">
-                <div className="flex-1">
-                  <label
-                    className="block text-sm font-medium mb-1"
-                    htmlFor="card-country"
-                  >
-                    Email <span className="text-rose-500">*</span>
-                  </label>
-                  <input
-                    id="card-state"
-                    className="form-input w-full h-12"
-                    type="text"
-                  />
-                </div>
-                <div className="flex-1">
-                  <label
-                    className="block text-sm font-medium mb-1"
-                    htmlFor="card-country"
-                  >
-                    ID role <span className="text-rose-500">*</span>
-                  </label>
-                  <select id="card-country" className="form-select w-full h-12">
-                    <option>Administrador</option>
-                    <option>Empleado de mantenimiento</option>
-                    <option>Líder de mantenimiento</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="md:flex space-y-4 md:space-y-0 md:space-x-4">
-                <div className="flex-2">
-                  <label
-                    className="block text-sm font-medium mb-1"
-                    htmlFor="card-state"
-                  >
-                    Profile image
-                  </label>
-                  <input
-                    id="card-state"
-                    className="form-input w-[640pxs] h-12"
-                    type="file"
                   />
                 </div>
               </div>
@@ -127,7 +53,7 @@ const AddWorkShift = () => {
               </div>
             </div>
           </form>
-        </div> */}
+        </div>
       </section>
     </Layout>
   );

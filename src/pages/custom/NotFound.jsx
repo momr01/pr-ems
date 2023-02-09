@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import routes from "../../helpers/routes";
 import NotFoundImage from "../../images/404-illustration.svg";
 
 const NotFound = () => {
@@ -23,7 +24,7 @@ const NotFound = () => {
                   else!
                 </div>
                 <Link
-                  to="/"
+                  to={routes.index}
                   className="btn bg-primary hover:bg-indigo-600 text-white"
                 >
                   Back To Home

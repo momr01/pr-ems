@@ -5,9 +5,10 @@ import {
   selectCurrentToken,
   selectCurrentUser,
   setCredentials,
-} from "../../auth/authSlice";
+} from "../../features/auth/authSlice";
 import images from "../../images/custom";
 import routes from "../../helpers/routes";
+import { useLoginMutation } from "../../features/auth/authApiSlice";
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,25}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -32,6 +33,8 @@ const Login = () => {
 
   const currentUser = useSelector(selectCurrentUser);
   const currentToken = useSelector(selectCurrentToken);
+
+  const [login, { isLoading }] = useLoginMutation();
 
   useEffect(() => {
     userRef.current?.focus();
@@ -71,28 +74,35 @@ const Login = () => {
       return;
     }
 
-    console.log({ user, pwd });
-    dispatch(setCredentials({ user, accessToken: pwd }));
+    //console.log({ user, pwd });
+    //dispatch(setCredentials({ user, accessToken: pwd }));
+    const json = {
+      username: user,
+      password: pwd,
+    };
 
-    // try {
-    //   const userData = await login({ user, pwd }).unwrap();
-    //   dispatch(setCredentials({ ...userData, user }));
-    //   setUser("");
-    //   setPwd("");
-    //   navigate("/welcome");
-    // } catch (err) {
-    //   if (!err?.originalStatus) {
-    //     // isLoading: true until timeout occurs
-    //     setErrMsg("No Server Response");
-    //   } else if (err.originalStatus === 400) {
-    //     setErrMsg("Missing Username or Password");
-    //   } else if (err.originalStatus === 401) {
-    //     setErrMsg("Unauthorized");
-    //   } else {
-    //     setErrMsg("Login Failed");
-    //   }
-    //   errRef.current.focus();
-    // }
+    try {
+      // const userData = await login({ user, pwd }).unwrap();
+      const userData = await login(json).unwrap();
+      // dispatch(setCredentials({ ...userData, user }));
+      console.log(userData)
+      dispatch(setCredentials({ user, accessToken: userData.token }));
+      setUser("");
+      setPwd("");
+      //navigate(routes.dashboard);
+    } catch (err) {
+      if (!err?.originalStatus) {
+        // isLoading: true until timeout occurs
+        setErrMsg("No Server Response");
+      } else if (err.originalStatus === 400) {
+        setErrMsg("Missing Username or Password");
+      } else if (err.originalStatus === 401) {
+        setErrMsg("Unauthorized");
+      } else {
+        setErrMsg("Login Failed");
+      }
+      errRef.current.focus();
+    }
   };
 
   const handleUserInput = (e) => setUser(e.target.value);
@@ -227,7 +237,6 @@ const Login = () => {
                           : "offscreen"
                       }
                     >
-                      
                       {/* 4 to 24 characters.
                       <br />
                       Must begin with a letter.
@@ -329,8 +338,23 @@ const Login = () => {
                   </Link> */}
                 </div>
                 <button className="btn bg-primary hover:bg-indigo-600 text-white w-full h-14">
-                  LOGIN
+                  {isLoading ? (
+                    <section className="justify-center items-center flex">
+                      <div className="loader"></div>
+                      <span className="ml-3 text-white font-semibold">
+                        Cargando
+                      </span>
+                    </section>
+                  ) : (
+                    "LOGIN"
+                  )}
                 </button>
+                {/* <section className="justify-center items-center flex">
+                  <div className="loader"></div>
+                  <span className="ml-3 text-primary font-semibold">
+                    Cargando
+                  </span>
+                </section> */}
               </form>
               {/* Footer */}
               {/* <div className="pt-5 mt-6 border-t border-slate-200">

@@ -1,6 +1,6 @@
 import { useLocation, Navigate, Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { logOut, selectCurrentToken } from "../auth/authSlice";
+import { logOut, selectCurrentToken } from "../features/auth/authSlice";
 import routes from "../helpers/routes";
 import { useTimer, useStopwatch } from "react-timer-hook";
 import { useEffect } from "react";
