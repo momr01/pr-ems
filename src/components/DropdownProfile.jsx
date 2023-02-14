@@ -3,13 +3,21 @@ import { Link } from "react-router-dom";
 import Transition from "../utils/Transition";
 
 import UserAvatar from "../images/user-avatar-32.png";
-import { logOut } from "../features/auth/authSlice";
-import { useDispatch } from "react-redux";
+import {
+  resetCredentials,
+  selectCurrentUser,
+} from "../features/auth/authSlice";
+import { useDispatch, useSelector } from "react-redux";
 import images from "../images/custom";
 import routes from "../helpers/routes";
+import { useLogoutMutation } from "../features/auth/authApiSlice";
 
 function DropdownProfile({ align }) {
   const dispatch = useDispatch();
+
+  const username = useSelector(selectCurrentUser);
+
+  const [logout] = useLogoutMutation();
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const trigger = useRef(null);
@@ -40,6 +48,15 @@ function DropdownProfile({ align }) {
     document.addEventListener("keydown", keyHandler);
     return () => document.removeEventListener("keydown", keyHandler);
   });
+
+  const logoutUser = async () => {
+    try {
+      await logout({ username }).unwrap();
+      dispatch(resetCredentials());
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="relative inline-flex">
@@ -108,7 +125,7 @@ function DropdownProfile({ align }) {
                 Sign Out
               </Link> */}
               <button
-                onClick={() => dispatch(logOut())}
+                onClick={logoutUser}
                 className="font-medium text-sm text-primary hover:text-indigo-600 flex items-center py-1 px-3"
               >
                 Logout

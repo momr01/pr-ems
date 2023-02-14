@@ -3,10 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { Kpis, Layout, DateSelectDashboard } from "../../components/custom";
 // import DateSelect from "../../components/DateSelect";
 import {
-  getPlanningList,
+ // getPlanningList,
   selectCurrentToken,
 } from "../../features/auth/authSlice";
-import { useGetUsersQuery } from "../../features/users/usersSlice";
+import {
+  selectAllUsers,
+  selectUserById,
+  // selectUsersResult,
+  useGetUsersQuery,
+} from "../../features/users/usersSlice";
 import { DashboardCard08 } from "../../partials/custom";
 // import DashboardCard08 from "../../partials/dashboard/DashboardCard08";
 
@@ -17,11 +22,18 @@ const Dashboard = () => {
   const token = useSelector(selectCurrentToken);
   console.log(token);
 
-  const { data, isLoading, isSuccess, isError, error } = useGetUsersQuery();
+  const { data, isLoading, isSuccess, isError, error, refetch } =
+    useGetUsersQuery();
 
-  console.log(error);
+  console.log(data);
 
-  dispatch(getPlanningList());
+  console.log(useSelector(selectAllUsers));
+
+  const user = useSelector((state) => selectUserById(state, Number(4)));
+
+  console.log(user);
+
+ // dispatch(getPlanningList());
 
   return (
     <Layout section="Dashboard" obs="Overview">
@@ -80,6 +92,7 @@ const Dashboard = () => {
           </select>
         </div>
       </section>
+      <button onClick={refetch}>refetch</button>
       <Kpis />
 
       <div className="grid grid-cols-12 gap-6">

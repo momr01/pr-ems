@@ -15,8 +15,13 @@ import { persistStore } from "redux-persist";
 
 let persistor = persistStore(store);
 
+// persistor.pause();
+// persistor.flush().then(() => {
+//   return persistor.purge();
+// });
+
 //root.render(
-  ReactDOM.render(
+ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate persistor={persistor}>
@@ -28,5 +33,5 @@ let persistor = persistStore(store);
       </PersistGate>
     </Provider>
   </React.StrictMode>,
-   document.getElementById('root')
+  document.getElementById("root")
 );

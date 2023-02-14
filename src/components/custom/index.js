@@ -9,3 +9,7 @@ export { default as Transition } from "./Transition";
 export { default as FilterButton } from "./FilterButton";
 export { default as OrdersTable } from "./orders/OrdersTable";
 export { default as OrdersTableItem } from "./orders/OrdersTableItem";
+export { default as FormUser } from "./management/FormUser";
+export { default as FormPlant } from "./management/FormPlant";
+export { default as FormShift } from "./management/FormShift";
+export { default as ManagementBase } from "./management/ManagementBase";

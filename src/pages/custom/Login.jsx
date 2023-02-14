@@ -9,6 +9,7 @@ import {
 import images from "../../images/custom";
 import routes from "../../helpers/routes";
 import { useLoginMutation } from "../../features/auth/authApiSlice";
+import icons from "../../images/custom/icons";
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,25}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -16,6 +17,8 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const Login = () => {
   const userRef = useRef();
   const errRef = useRef();
+
+  const [eye, setEye] = useState(false);
 
   const [user, setUser] = useState("");
   const [validUser, setValidUser] = useState(false);
@@ -110,8 +113,36 @@ const Login = () => {
      * 
      */
 
-    console.log({ user, pwd });
-    dispatch(setCredentials({ user, accessToken: pwd }));
+    // console.log({ user, pwd });
+    // dispatch(setCredentials({ user, accessToken: pwd }));
+
+    const json = {
+      username: user,
+      password: pwd,
+    };
+
+    try {
+      // const userData = await login({ user, pwd }).unwrap();
+      const userData = await login(json).unwrap();
+      // dispatch(setCredentials({ ...userData, user }));
+      console.log(userData);
+      dispatch(setCredentials({ user, accessToken: userData.token }));
+      setUser("");
+      setPwd("");
+      //navigate(routes.dashboard);
+    } catch (err) {
+      if (!err?.originalStatus) {
+        // isLoading: true until timeout occurs
+        setErrMsg("No Server Response");
+      } else if (err.originalStatus === 400) {
+        setErrMsg("Missing Username or Password");
+      } else if (err.originalStatus === 401) {
+        setErrMsg("Unauthorized");
+      } else {
+        setErrMsg("Login Failed");
+      }
+      errRef.current.focus();
+    }
   };
 
   const handleUserInput = (e) => setUser(e.target.value);
@@ -265,7 +296,7 @@ const Login = () => {
                       <input
                         id="password"
                         className="form-input w-full h-12 bg-gray-300 pl-10 placeholder:text-base placeholder:text-gray-700"
-                        type="password"
+                        type={eye ? "text" : "password"}
                         onChange={handlePwdInput}
                         value={pwd}
                         placeholder="Password"
@@ -296,6 +327,27 @@ const Login = () => {
                             <path d="M8 11v-4a4 4 0 0 1 8 0v4" />
                           </svg>
                         </div>
+                      </section>
+
+                      <section className="relative">
+                        <button
+                          type="button"
+                          className="absolute inset-2 -top-10 left-auto flex items-center mr-2"
+                        >
+                          {eye ? (
+                            <img
+                              onClick={() => setEye(false)}
+                              src={icons.closedEye}
+                              alt="Ojo cerrado"
+                            />
+                          ) : (
+                            <img
+                              onClick={() => setEye(true)}
+                              src={icons.openedEye}
+                              alt="Ojo abierto"
+                            />
+                          )}
+                        </button>
                       </section>
                     </div>
                     <p

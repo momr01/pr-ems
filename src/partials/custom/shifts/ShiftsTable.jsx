@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { UsersTableItem } from "..";
 import {
   selectAllUsers,
   selectUserById,
   selectUsersIds,
   useGetUsersQuery,
 } from "../../../features/users/usersSlice";
+import { ShiftsTableItem } from "../index";
 
-function UsersTable({ selectedItems }) {
+function ShiftsTable({ selectedItems }) {
   const [selectAll, setSelectAll] = useState(false);
   const [isCheck, setIsCheck] = useState([]);
   const [list, setList] = useState([]);
@@ -80,25 +80,10 @@ function UsersTable({ selectedItems }) {
                   </div>
                 </th>
                 <th className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                  <div className="font-semibold text-left">Username</div>
+                  <div className="font-semibold text-left">Name</div>
                 </th>
                 <th className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                  <div className="font-semibold text-left">First name</div>
-                </th>
-                <th className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                  <div className="font-semibold text-left">Last name</div>
-                </th>
-                <th className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                  <div className="font-semibold text-left">Email</div>
-                </th>
-                <th className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                  <div className="font-semibold text-left">Role</div>
-                </th>
-                <th className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                  <div className="font-semibold text-left">State</div>
-                </th>
-                <th className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                  <div className="font-semibold text-left">Data entry</div>
+                  <div className="font-semibold text-left">Schedule</div>
                 </th>
                 <th className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                   <div className="font-semibold text-left">Actions</div>
@@ -116,7 +101,7 @@ function UsersTable({ selectedItems }) {
   );
 }
 
-export default UsersTable;
+export default ShiftsTable;
 
 const TrTable = ({ userId, isCheck, setIsCheck, setSelectAll }) => {
   const user = useSelector((state) => selectUserById(state, userId));
@@ -131,7 +116,7 @@ const TrTable = ({ userId, isCheck, setIsCheck, setSelectAll }) => {
   };
 
   return (
-    <UsersTableItem
+    <ShiftsTableItem
       key={user.id}
       id={user.id}
       username={user.username}

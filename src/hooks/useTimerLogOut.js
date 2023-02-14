@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useStopwatch } from "react-timer-hook";
-import { logOut } from "../features/auth/authSlice";
+import { resetCredentials } from "../features/auth/authSlice";
 
 const useTimerLogOut = () => {
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ const useTimerLogOut = () => {
   useEffect(() => {
     console.log(hours, minutes, seconds);
     if (hours === 0 && minutes === 0 && seconds === 10) {
-      dispatch(logOut());
+      dispatch(resetCredentials());
     }
   }, [hours, minutes, seconds]);
 

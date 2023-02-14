@@ -1,38 +1,87 @@
+import { createEntityAdapter, createSelector } from "@reduxjs/toolkit";
 import { apiSlice } from "../../app/api/apiSlice";
+import url from "../../helpers/url";
+
+apiSlice.enhanceEndpoints({ addTagTypes: ["User"] });
+
+const usersAdapter = createEntityAdapter({
+  //selectId: (user) => user.id
+});
+
+const initialState = usersAdapter.getInitialState();
 
 export const usersSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getUsers: builder.query({
-      query: () => "/auth/get-users/",
-      // query: () => ({
-      //   url: "/auth/get-users/",
-      //    method: "GET",
-        // Headers: {
-        //   Authorization: "token 1a0544b238b81eedb48b43e574ce86a48b85c4b6",
-        //   'token': "1a0544b238b81eedb48b43e574ce86a48b85c4b6",
-        // },
-       // prepareHeaders: (headers) => {
-        //const token = getState().auth.token;
-       // if (token) {
-        // headers.set(
-        //   'Authorization',
-        //   "token 1a0544b238b81eedb48b43e574ce86a48b85c4b6"
-        // );
-        // headers.set('token', "1a0544b238b81eedb48b43e574ce86a48b85c4b6");
-       // }
-        //   return headers;
-        // },
-        // headers: {
-        //   "Access-Control-Allow-Headers":
-        //     "DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,x-xsrf-token,x-csrf-token,If-Modified-Since,Cache-Control,Content-Type, X-Custom-Header, Access-Control-Expose-Headers, Token, Authorization, token",
-        //   Accept: "*/*",
-        //   Authorization: `token 1a0544b238b81eedb48b43e574ce86a48b85c4b6`,
-        //   token: "1a0544b238b81eedb48b43e574ce86a48b85c4b6",
-        // },
-     // }),
-      keepUnusedDataFor: 5,
+      query: () => url.backend.getAllUsers,
+      transformResponse: (response) => {
+        return usersAdapter.setAll(initialState, response.users);
+      },
+      providesTags: (result, error, arg) => [
+        { type: "User", id: "LIST" },
+        ...result.ids.map((id) => ({ type: "User", id })),
+      ],
+    }),
+    addUser: builder.mutation({
+      query: (body) => ({
+        url: url.backend.userRegister,
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["User"],
+    }),
+    updateUser: builder.mutation({
+      query: ({ id, body }) => ({
+        url: url.backend.updateProfile(id),
+        method: "PUT",
+        body,
+      }),
+      invalidatesTags: ["User"],
+    }),
+    enableUser: builder.mutation({
+      query: ({ id }) => ({
+        url: url.backend.enableUser(id),
+        method: "PUT",
+      }),
+      invalidatesTags: ["User"],
+    }),
+    disableUser: builder.mutation({
+      query: ({ id }) => ({
+        url: url.backend.disableUser(id),
+        method: "PUT",
+      }),
+      invalidatesTags: ["User"],
+    }),
+    changePwd: builder.mutation({
+      query: ({ id, body }) => ({
+        url: url.backend.changePwd(id),
+        method: "PUT",
+        body,
+      }),
+      invalidatesTags: ["USER"],
     }),
   }),
 });
 
-export const { useGetUsersQuery } = usersSlice;
+export const {
+  useGetUsersQuery,
+  useAddUserMutation,
+  useUpdateUserMutation,
+  useEnableUserMutation,
+  useDisableUserMutation,
+} = usersSlice;
+
+export const selectUsersResult = usersSlice.endpoints.getUsers.select();
+
+const selectUsersData = createSelector(
+  selectUsersResult,
+  (usersResult) => usersResult.data
+);
+
+export const {
+  selectAll: selectAllUsers,
+  selectById: selectUserById,
+  selectIds: selectUsersIds,
+} = usersAdapter.getSelectors(
+  (state) => selectUsersData(state) ?? initialState
+);

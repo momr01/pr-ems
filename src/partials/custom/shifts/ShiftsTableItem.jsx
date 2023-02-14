@@ -1,15 +1,7 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import {
-  useDisableUserMutation,
-  useEnableUserMutation,
-} from "../../../features/users/usersSlice";
 import routes from "../../../helpers/routes";
 
-function UsersTableItem(props) {
-  const [enableUser] = useEnableUserMutation();
-  const [disableUser] = useDisableUserMutation();
-
+function ShiftsTableItem(props) {
   const totalColor = (status) => {
     switch (status) {
       case "Paid":
@@ -62,6 +54,7 @@ function UsersTableItem(props) {
   const enableThisUser = async () => {
     try {
       await enableUser({ id: props.id }).unwrap();
+      console.log("USER ENABLED");
     } catch (error) {
       console.log(error);
     }
@@ -70,50 +63,9 @@ function UsersTableItem(props) {
   const disableThisUser = async () => {
     try {
       await disableUser({ id: props.id }).unwrap();
+      console.log("USER DISABLED");
     } catch (error) {
       console.log(error);
-    }
-  };
-
-  const showState = (state) => {
-    if (state) {
-      return (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="icon icon-tabler icon-tabler-circle-check"
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          stroke-width="2"
-          stroke="#00b341"
-          fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <circle cx="12" cy="12" r="9" />
-          <path d="M9 12l2 2l4 -4" />
-        </svg>
-      );
-    } else {
-      return (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="icon icon-tabler icon-tabler-x"
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          stroke-width="2"
-          stroke="#ff2825"
-          fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <line x1="18" y1="6" x2="6" y2="18" />
-          <line x1="6" y1="6" x2="18" y2="18" />
-        </svg>
-      );
     }
   };
 
@@ -157,8 +109,7 @@ function UsersTableItem(props) {
         <div>{props.role}</div>
       </td>
       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-        {/* <div>{props.isActive.toString()}</div> */}
-        {showState(props.isActive)}
+        <div>{props.isActive.toString()}</div>
       </td>
       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
         <div className="flex items-center">
@@ -183,13 +134,13 @@ function UsersTableItem(props) {
               <path d="M16 20c.3 0 .5-.1.7-.3l5.7-5.7-1.4-1.4-4 4V8h-2v8.6l-4-4L9.6 14l5.7 5.7c.2.2.4.3.7.3zM9 22h14v2H9z" />
             </svg>
           </button> */}
-          {/* <button className="text-rose-500 hover:text-rose-600 rounded-full">
+          <button className="text-rose-500 hover:text-rose-600 rounded-full">
             <span className="sr-only">Delete</span>
             <svg className="w-8 h-8 fill-current" viewBox="0 0 32 32">
               <path d="M13 15h2v6h-2zM17 15h2v6h-2z" />
               <path d="M20 9c0-.6-.4-1-1-1h-6c-.6 0-1 .4-1 1v2H8v2h1v10c0 .6.4 1 1 1h12c.6 0 1-.4 1-1V13h1v-2h-4V9zm-6 1h4v1h-4v-1zm7 3v9H11v-9h10z" />
             </svg>
-          </button> */}
+          </button>
 
           {props.isActive ? (
             <button
@@ -244,4 +195,4 @@ function UsersTableItem(props) {
   );
 }
 
-export default UsersTableItem;
+export default ShiftsTableItem;

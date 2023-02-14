@@ -13,10 +13,15 @@ import {
   Login,
   Maintenance,
   NotFound,
+  Plants,
   ProfileNotifications,
   ProfilePanel,
   Reports,
   ResetPassword,
+  Shifts,
+  UpdatePlant,
+  UpdateShift,
+  UpdateUser,
   Users,
 } from "./pages/custom";
 import PublicRoute from "./routers/PublicRoute";
@@ -47,8 +52,13 @@ function App() {
           <Route exact path={routes.reports} element={<Reports />} />
           <Route exact path={routes.users} element={<Users />} />
           <Route exact path={routes.addUser} element={<AddUser />} />
+          <Route exact path={routes.updateUser()} element={<UpdateUser />} />
+          <Route exact path={routes.plants} element={<Plants />} />
           <Route exact path={routes.addPlant} element={<AddPlant />} />
+          <Route exact path={routes.updatePlant()} element={<UpdatePlant />} />
+          <Route exact path={routes.shifts} element={<Shifts />} />
           <Route exact path={routes.addShift} element={<AddShift />} />
+          <Route exact path={routes.updateShift()} element={<UpdateShift />} />
           <Route exact path={routes.profile} element={<ProfilePanel />} />
           <Route
             exact
