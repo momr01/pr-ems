@@ -4,7 +4,8 @@ import SearchModal from "../components/ModalSearch";
 import Notifications from "../components/DropdownNotifications";
 import Help from "../components/DropdownHelp";
 import UserMenu from "../components/DropdownProfile";
-import images from "../images/custom"
+import images from "../images/custom";
+import { LangSelect } from "../components/custom";
 
 function Header({ sidebarOpen, setSidebarOpen }) {
   const [searchModalOpen, setSearchModalOpen] = useState(false);
@@ -14,7 +15,7 @@ function Header({ sidebarOpen, setSidebarOpen }) {
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 -mb-px">
           {/* Header: Left side */}
-          <div className="flex">
+          <div className="flex items-center">
             {/* Hamburger button */}
             <button
               className="text-slate-500 hover:text-slate-600 lg:hidden"
@@ -54,14 +55,20 @@ function Header({ sidebarOpen, setSidebarOpen }) {
               </svg>
             </div>
 
-            <button className="flex ml-5 lg:ml-0">
-              {/* <img src={images.UsaFlag} alt="english" /> */}
+            {/* <button className="flex ml-5 lg:ml-0">
               <div className="w-[30px] h-[30px] rounded-[50%] mr-3">
                 <img src={images.UsaFlag} />
-
               </div>
-              <span className="text-black text-lg hidden md:block">English</span>
-            </button>
+              <span className="text-black text-lg hidden md:block">
+                English
+              </span>
+            </button> */}
+            <div className="ml-1">
+            <LangSelect />
+
+            </div>
+
+           
           </div>
 
           {/* Header: Right side */}

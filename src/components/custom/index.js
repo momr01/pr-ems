@@ -1,4 +1,5 @@
-export { default as Layout } from "./Layout";
+export { default as Layout } from "./layouts/Layout";
+export { default as WithRole } from "./layouts/WithRole";
 export { default as Kpis } from "./dashboard/Kpis";
 export { default as DateSelectDashboard } from "./dashboard/DateSelect";
 export { default as Sidebar } from "./profile/Sidebar";
@@ -13,3 +14,4 @@ export { default as FormUser } from "./management/FormUser";
 export { default as FormPlant } from "./management/FormPlant";
 export { default as FormShift } from "./management/FormShift";
 export { default as ManagementBase } from "./management/ManagementBase";
+export { default as LangSelect } from "./LangSelect";

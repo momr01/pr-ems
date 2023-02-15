@@ -1,4 +1,4 @@
-import { FormUser, Layout } from "../../../components/custom";
+import { FormUser, Layout, WithRole } from "../../../components/custom";
 
 const AddUser = () => {
   return (
@@ -19,4 +19,4 @@ const AddUser = () => {
   );
 };
 
-export default AddUser;
+export default WithRole(AddUser, "admin");

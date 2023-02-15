@@ -60,6 +60,18 @@ export const usersSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["USER"],
     }),
+    getRoles: builder.query({
+      query: () => url.backend.getRoles,
+      transformResponse: (response) => {
+        return response.roles;
+      },
+    }),
+    getLanguages: builder.query({
+      query: () => url.backend.languages,
+      transformResponse: (response) => {
+        return response.available_languages;
+      },
+    }),
   }),
 });
 
@@ -69,6 +81,8 @@ export const {
   useUpdateUserMutation,
   useEnableUserMutation,
   useDisableUserMutation,
+  useGetRolesQuery,
+  useGetLanguagesQuery,
 } = usersSlice;
 
 export const selectUsersResult = usersSlice.endpoints.getUsers.select();

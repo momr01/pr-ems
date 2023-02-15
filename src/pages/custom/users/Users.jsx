@@ -1,4 +1,4 @@
-import { Layout, ManagementBase } from "../../../components/custom";
+import { Layout, ManagementBase, WithRole } from "../../../components/custom";
 import routes from "../../../helpers/routes";
 import {
   UsersDeleteButton,
@@ -32,4 +32,4 @@ const Users = () => {
   );
 };
 
-export default Users;
+export default WithRole(Users, "admin");

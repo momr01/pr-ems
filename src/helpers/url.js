@@ -19,6 +19,10 @@ const url = {
     plantRegister: "/plants/register/",
     updatePlant: (id) => `/plants/update/${id}/`,
     deletePlant: (id) => `/plants/delete/${id}/`,
+    getShifts: "/plants/shift/get-shifts/",
+    shiftRegister: "/plants/shift/register/",
+    updateShift: (id) => `/plants/shift/update/${id}/`,
+    deleteShift: (id) => `/plants/shift/delete/${id}/`,
   },
 };
 

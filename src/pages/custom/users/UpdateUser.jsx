@@ -1,7 +1,6 @@
-import { FormUser, Layout } from "../../../components/custom";
+import { FormUser, Layout, WithRole } from "../../../components/custom";
 
 const UpdateUser = () => {
- 
   return (
     <Layout section="Update User" obs="Management">
       <section>
@@ -20,4 +19,4 @@ const UpdateUser = () => {
   );
 };
 
-export default UpdateUser;
+export default WithRole(UpdateUser, "admin");

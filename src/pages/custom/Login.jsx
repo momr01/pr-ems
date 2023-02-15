@@ -126,7 +126,13 @@ const Login = () => {
       const userData = await login(json).unwrap();
       // dispatch(setCredentials({ ...userData, user }));
       console.log(userData);
-      dispatch(setCredentials({ user, accessToken: userData.token }));
+      dispatch(
+        setCredentials({
+          user,
+          accessToken: userData.token,
+          role: userData.id_role,
+        })
+      );
       setUser("");
       setPwd("");
       //navigate(routes.dashboard);

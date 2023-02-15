@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Header from "../../partials/Header";
-import Sidebar from "../../partials/Sidebar";
+import Header from "../../../partials/Header";
+import Sidebar from "../../../partials/Sidebar";
 
 const Layout = ({ section, obs, children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);

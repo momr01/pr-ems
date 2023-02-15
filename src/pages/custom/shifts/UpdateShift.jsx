@@ -1,4 +1,4 @@
-import { FormShift, Layout } from "../../../components/custom";
+import { FormShift, Layout, WithRole } from "../../../components/custom";
 
 const UpdateShift = () => {
   return (
@@ -19,4 +19,4 @@ const UpdateShift = () => {
   );
 };
 
-export default UpdateShift;
+export default WithRole(UpdateShift, "admin");

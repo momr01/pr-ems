@@ -3,12 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { Kpis, Layout, DateSelectDashboard } from "../../components/custom";
 // import DateSelect from "../../components/DateSelect";
 import {
- // getPlanningList,
+  // getPlanningList,
   selectCurrentToken,
 } from "../../features/auth/authSlice";
 import {
   selectAllUsers,
   selectUserById,
+  useGetLanguagesQuery,
+  useGetRolesQuery,
   // selectUsersResult,
   useGetUsersQuery,
 } from "../../features/users/usersSlice";
@@ -16,24 +18,30 @@ import { DashboardCard08 } from "../../partials/custom";
 // import DashboardCard08 from "../../partials/dashboard/DashboardCard08";
 
 const Dashboard = () => {
-  const dispatch = useDispatch();
   const [companySetting, setCompanySetting] = useState(true);
 
-  const token = useSelector(selectCurrentToken);
-  console.log(token);
+  // const {data} = useGetRolesQuery()
 
-  const { data, isLoading, isSuccess, isError, error, refetch } =
-    useGetUsersQuery();
+  // console.log(data)
 
-  console.log(data);
+  // const token = useSelector(selectCurrentToken);
+  // console.log(token);
 
-  console.log(useSelector(selectAllUsers));
+  // const { data, isLoading, isSuccess, isError, error, refetch } =
+  //   useGetUsersQuery();
 
-  const user = useSelector((state) => selectUserById(state, Number(4)));
+  // console.log(data);
 
-  console.log(user);
+  // console.log(useSelector(selectAllUsers));
 
- // dispatch(getPlanningList());
+  // const user = useSelector((state) => selectUserById(state, Number(4)));
+
+  // console.log(user);
+
+  // dispatch(getPlanningList());
+
+  // const { data } = useGetLanguagesQuery();
+  // console.log(data);
 
   return (
     <Layout section="Dashboard" obs="Overview">
@@ -92,7 +100,7 @@ const Dashboard = () => {
           </select>
         </div>
       </section>
-      <button onClick={refetch}>refetch</button>
+      {/* <button onClick={refetch}>refetch</button> */}
       <Kpis />
 
       <div className="grid grid-cols-12 gap-6">

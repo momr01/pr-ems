@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import {
   selectUserById,
   useAddUserMutation,
+  useGetRolesQuery,
   useGetUsersQuery,
   useUpdateUserMutation,
 } from "../../../features/users/usersSlice";
@@ -15,6 +16,10 @@ const FormUser = () => {
   const [eye, setEye] = useState(false);
   const navigate = useNavigate();
   const { id } = useParams();
+
+  const {data: roles } = useGetRolesQuery()
+
+  console.log(roles)
 
   useGetUsersQuery();
 
@@ -278,9 +283,10 @@ const FormUser = () => {
               })}
               disabled={id ? true : false}
             >
-              <option value={1}>Administrador</option>
-              <option value={2}>Empleado de mantenimiento</option>
-              <option value={3}>Líder de mantenimiento</option>
+              {roles?.map((role, i) => (
+                <option key={i} value={role.id}>{role.name_role}</option>
+
+              ))}
             </select>
             {errors.id_role && (
               <span className="text-red-500 text-sm">

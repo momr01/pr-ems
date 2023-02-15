@@ -1,4 +1,4 @@
-import { FormPlant, Layout } from "../../../components/custom";
+import { FormPlant, Layout, WithRole } from "../../../components/custom";
 
 const AddPlant = () => {
   return (
@@ -14,11 +14,9 @@ const AddPlant = () => {
         <div>
           <FormPlant />
         </div>
-
-      
       </section>
     </Layout>
   );
 };
 
-export default AddPlant;
+export default WithRole(AddPlant, "admin");

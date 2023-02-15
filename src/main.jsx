@@ -15,6 +15,13 @@ import { persistStore } from "redux-persist";
 
 let persistor = persistStore(store);
 
+// export const clearStorage = () => {
+//   persistor.pause();
+//   persistor.flush().then(() => {
+//     return persistor.purge();
+//   });
+// };
+
 // persistor.pause();
 // persistor.flush().then(() => {
 //   return persistor.purge();

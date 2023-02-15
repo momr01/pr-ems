@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import {
-  selectAllUsers,
-  selectUserById,
-  selectUsersIds,
-  useGetUsersQuery,
-} from "../../../features/users/usersSlice";
+  selectAllShifts,
+  selectShiftById,
+  selectShiftsIds,
+  useGetShiftsQuery,
+} from "../../../features/plants/shiftsSlice";
 import { ShiftsTableItem } from "../index";
 
 function ShiftsTable({ selectedItems }) {
@@ -13,19 +13,19 @@ function ShiftsTable({ selectedItems }) {
   const [isCheck, setIsCheck] = useState([]);
   const [list, setList] = useState([]);
 
-  const { isLoading, isSuccess, isError, error } = useGetUsersQuery();
+  const { isLoading, isSuccess, isError, error } = useGetShiftsQuery();
 
-  const usersIds = useSelector(selectUsersIds);
-  const users = useSelector(selectAllUsers);
+  const shiftsIds = useSelector(selectShiftsIds);
+  const shifts = useSelector(selectAllShifts);
 
   let content;
   if (isLoading) {
     content = <p>Cargando...</p>;
   } else if (isSuccess) {
-    content = usersIds.map((userId, index) => (
+    content = shiftsIds.map((shiftId, index) => (
       <TrTable
         key={index}
-        userId={userId}
+        shiftId={shiftId}
         isCheck={isCheck}
         setIsCheck={setIsCheck}
         setSelectAll={setSelectAll}
@@ -36,12 +36,12 @@ function ShiftsTable({ selectedItems }) {
   }
 
   useEffect(() => {
-    setList(users);
+    setList(shifts);
   }, []);
 
   const handleSelectAll = () => {
     setSelectAll(!selectAll);
-    setIsCheck(users.map((li) => li.id));
+    setIsCheck(shifts.map((li) => li.id));
     if (selectAll) {
       setIsCheck([]);
     }
@@ -55,7 +55,7 @@ function ShiftsTable({ selectedItems }) {
     <div className="bg-white shadow-lg rounded-sm border border-slate-200 relative">
       <header className="px-5 py-4">
         <h2 className="font-semibold text-slate-800">
-          Users{" "}
+          Shifts{" "}
           <span className="text-slate-400 font-medium">{list?.length}</span>
         </h2>
       </header>
@@ -103,8 +103,8 @@ function ShiftsTable({ selectedItems }) {
 
 export default ShiftsTable;
 
-const TrTable = ({ userId, isCheck, setIsCheck, setSelectAll }) => {
-  const user = useSelector((state) => selectUserById(state, userId));
+const TrTable = ({ shiftId, isCheck, setIsCheck, setSelectAll }) => {
+  const shift = useSelector((state) => selectShiftById(state, shiftId));
 
   const handleClick = (e) => {
     const { id, checked } = e.target;
@@ -117,17 +117,12 @@ const TrTable = ({ userId, isCheck, setIsCheck, setSelectAll }) => {
 
   return (
     <ShiftsTableItem
-      key={user.id}
-      id={user.id}
-      username={user.username}
-      firstName={user.first_name}
-      lastName={user.last_name}
-      email={user.email}
-      role={user.role.role_name}
-      isActive={user.is_active}
-      dataEntry={user.data_entry}
+      key={shift.id}
+      id={shift.id}
+      name={shift.name}
+      schedule={shift.schedule}
       handleClick={handleClick}
-      isChecked={isCheck.includes(user.id)}
+      isChecked={isCheck.includes(shift.id)}
     />
   );
 };

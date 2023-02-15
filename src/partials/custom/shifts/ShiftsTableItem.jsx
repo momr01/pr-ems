@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
+import { useDeleteShiftMutation } from "../../../features/plants/shiftsSlice";
 import routes from "../../../helpers/routes";
 
 function ShiftsTableItem(props) {
+  const [deleteShift] = useDeleteShiftMutation();
+
   const totalColor = (status) => {
     switch (status) {
       case "Paid":
@@ -51,21 +54,12 @@ function ShiftsTableItem(props) {
     }
   };
 
-  const enableThisUser = async () => {
+  const handleDelete = async () => {
     try {
-      await enableUser({ id: props.id }).unwrap();
-      console.log("USER ENABLED");
+      await deleteShift(props.id).unwrap();
+      console.log("eliminado");
     } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const disableThisUser = async () => {
-    try {
-      await disableUser({ id: props.id }).unwrap();
-      console.log("USER DISABLED");
-    } catch (error) {
-      console.log(error);
+      console.log("ocurrió un error");
     }
   };
 
@@ -86,40 +80,22 @@ function ShiftsTableItem(props) {
         </div>
       </td>
       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-        <div className="font-medium text-sky-500">{props.username}</div>
+        <div className="font-medium text-sky-500">{props.name}</div>
       </td>
-      <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-        <div className={`font-medium ${totalColor("paid")}`}>
-          {props.firstName}
-        </div>
-      </td>
+
       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
         <div
           className={`inline-flex font-medium rounded-full text-center px-2.5 py-0.5 ${statusColor(
             "due"
           )}`}
         >
-          {props.lastName}
+          {props.schedule}
         </div>
       </td>
-      <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-        <div className="font-medium text-slate-800">{props.email}</div>
-      </td>
-      <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-        <div>{props.role}</div>
-      </td>
-      <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-        <div>{props.isActive.toString()}</div>
-      </td>
-      <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-        <div className="flex items-center">
-          {typeIcon(props.type)}
-          <div>{props.dataEntry}</div>
-        </div>
-      </td>
+
       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
         <div className="space-x-1 flex items-center">
-          <Link to={routes.updateUser(props.id)}>
+          <Link to={routes.updateShift(props.id)}>
             <button className="text-slate-400 hover:text-slate-500 rounded-full">
               <span className="sr-only">Edit</span>
               <svg className="w-8 h-8 fill-current" viewBox="0 0 32 32">
@@ -134,61 +110,16 @@ function ShiftsTableItem(props) {
               <path d="M16 20c.3 0 .5-.1.7-.3l5.7-5.7-1.4-1.4-4 4V8h-2v8.6l-4-4L9.6 14l5.7 5.7c.2.2.4.3.7.3zM9 22h14v2H9z" />
             </svg>
           </button> */}
-          <button className="text-rose-500 hover:text-rose-600 rounded-full">
+          <button
+            className="text-rose-500 hover:text-rose-600 rounded-full"
+            onClick={handleDelete}
+          >
             <span className="sr-only">Delete</span>
             <svg className="w-8 h-8 fill-current" viewBox="0 0 32 32">
               <path d="M13 15h2v6h-2zM17 15h2v6h-2z" />
               <path d="M20 9c0-.6-.4-1-1-1h-6c-.6 0-1 .4-1 1v2H8v2h1v10c0 .6.4 1 1 1h12c.6 0 1-.4 1-1V13h1v-2h-4V9zm-6 1h4v1h-4v-1zm7 3v9H11v-9h10z" />
             </svg>
           </button>
-
-          {props.isActive ? (
-            <button
-              className="text-slate-400 hover:text-slate-500 rounded-full"
-              onClick={disableThisUser}
-            >
-              <span className="sr-only">Disable</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="icon icon-tabler icon-tabler-ban"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="#06184a"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <circle cx="12" cy="12" r="9" />
-                <line x1="5.7" y1="5.7" x2="18.3" y2="18.3" />
-              </svg>
-            </button>
-          ) : (
-            <button
-              className="text-slate-400 hover:text-slate-500 rounded-full"
-              onClick={enableThisUser}
-            >
-              <span className="sr-only">Enable</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="icon icon-tabler icon-tabler-checks"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="#06184a"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M7 12l5 5l10 -10" />
-                <path d="M2 12l5 5m5 -5l5 -5" />
-              </svg>
-            </button>
-          )}
         </div>
       </td>
     </tr>

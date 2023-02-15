@@ -1,9 +1,23 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import routes from "../../../helpers/routes";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
+import {
+  selectShiftById,
+  useAddShiftMutation,
+  useGetShiftsQuery,
+  useUpdateShiftMutation,
+} from "../../../features/plants/shiftsSlice";
+import { useSelector } from "react-redux";
 
-const FormShift = ({ id }) => {
+const FormShift = () => {
+  const navigate = useNavigate();
+  const { id } = useParams();
+
+  useGetShiftsQuery();
+
+  const shift = useSelector((state) => selectShiftById(state, id));
+
   const {
     register,
     handleSubmit,
@@ -11,19 +25,44 @@ const FormShift = ({ id }) => {
     formState: { errors },
   } = useForm();
 
+  const [addShift, { isLoading }] = useAddShiftMutation();
+  const [updateShift, { isLoading: isLoadingEdit }] = useUpdateShiftMutation();
+
+  const test = "15:00 : 21:00".slice(8, 13);
+  console.log(test);
+
   useEffect(() => {
     let defaultValues = {};
     defaultValues.name = id ? shift?.name : "";
-    //defaultValues.schedule = id ? shift?.schedule : "";
+    defaultValues.schedule_from = id ? shift?.schedule.slice(0, 5) : "";
+    defaultValues.schedule_to = id ? shift?.schedule.slice(8, 13) : "";
     reset({ ...defaultValues });
   }, [reset]);
 
-  const submitForm = (data) => {
+  const submitForm = async (data) => {
     console.log(data);
 
     let formData = new FormData();
     formData.append("name", data.name);
     formData.append("schedule", `${data.schedule_from} - ${data.schedule_to}`);
+
+    if (id) {
+      try {
+        await updateShift({ id, body: formData }).unwrap();
+        console.log("actualizado");
+        navigate(routes.shifts);
+      } catch (error) {
+        console.log("error al actualizar");
+      }
+    } else {
+      try {
+        await addShift(formData).unwrap();
+        console.log("creado");
+        navigate(routes.shifts);
+      } catch (error) {
+        console.log("No se pudo cargar el horario");
+      }
+    }
   };
 
   return (
@@ -138,11 +177,16 @@ const FormShift = ({ id }) => {
               Cancel
             </button>
           </Link>
-          <button
-            type="submit"
-            className="btn bg-primary border-slate-200 hover:border-slate-300 text-white h-[100%]"
-          >
-            Create
+
+          <button className="btn bg-primary border-slate-200 hover:border-slate-300 text-white h-[100%]">
+            {isLoading || isLoadingEdit ? (
+              <section className="justify-center items-center flex">
+                <div className="loader"></div>
+                <span className="ml-3 text-white font-semibold">Cargando</span>
+              </section>
+            ) : (
+              <span>{id ? "Update" : "Create"}</span>
+            )}
           </button>
         </div>
 

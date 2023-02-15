@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import images from "../images/custom";
 import routes from "../helpers/routes";
 import { useLogoutMutation } from "../features/auth/authApiSlice";
+import { apiSlice } from "../app/api/apiSlice";
 
 function DropdownProfile({ align }) {
   const dispatch = useDispatch();
@@ -53,8 +54,8 @@ function DropdownProfile({ align }) {
   const logoutUser = async () => {
     try {
       await logout({ username }).unwrap();
-      storage.removeItem("persist:root");
       dispatch(resetCredentials());
+      dispatch(apiSlice.util.resetApiState());
     } catch (error) {
       console.log(error);
     }

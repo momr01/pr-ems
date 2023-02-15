@@ -1,4 +1,4 @@
-import { Layout, ManagementBase } from "../../../components/custom";
+import { Layout, ManagementBase, WithRole } from "../../../components/custom";
 import routes from "../../../helpers/routes";
 import {
   ShiftsDeleteButton,
@@ -32,4 +32,4 @@ const Shifts = () => {
   );
 };
 
-export default Shifts;
+export default WithRole(Shifts, "admin");

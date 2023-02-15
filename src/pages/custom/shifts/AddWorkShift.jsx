@@ -1,5 +1,5 @@
 import React from "react";
-import { FormShift, Layout } from "../../../components/custom";
+import { FormShift, Layout, WithRole } from "../../../components/custom";
 
 const AddWorkShift = () => {
   return (
@@ -20,4 +20,4 @@ const AddWorkShift = () => {
   );
 };
 
-export default AddWorkShift;
+export default WithRole(AddWorkShift, "admin");
