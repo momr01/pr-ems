@@ -5,11 +5,20 @@ import { persistReducer } from "redux-persist";
 import { combineReducers } from "@reduxjs/toolkit";
 import { apiSlice } from "./api/apiSlice";
 import authSlice from "../features/auth/authSlice";
+import { encryptTransform } from "redux-persist-transform-encrypt";
 
 const persistConfig = {
   key: "root",
   version: 1,
   storage,
+  transforms: [
+    encryptTransform({
+      secretKey: "my-super-secret-key",
+      onError: function (error) {
+        // Handle the error.
+      },
+    }),
+  ],
 };
 
 const reducer = combineReducers({

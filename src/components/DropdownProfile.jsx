@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Transition from "../utils/Transition";
+import storage from "redux-persist/lib/storage";
 
 import UserAvatar from "../images/user-avatar-32.png";
 import {
@@ -52,6 +53,7 @@ function DropdownProfile({ align }) {
   const logoutUser = async () => {
     try {
       await logout({ username }).unwrap();
+      storage.removeItem("persist:root");
       dispatch(resetCredentials());
     } catch (error) {
       console.log(error);
