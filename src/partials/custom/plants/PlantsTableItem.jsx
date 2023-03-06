@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
-import { useDeletePlantMutation } from "../../../features/plants/plantsSlice";
+import { Link, useNavigate } from "react-router-dom";
+import { useDeletePlantMutation } from "../../../features/management/plants/plantsApiSlice";
 import routes from "../../../helpers/routes";
 
 function PlantsTableItem(props) {
+  const navigate = useNavigate();
   const [deletePlant] = useDeletePlantMutation();
 
   const totalColor = (status) => {
@@ -54,24 +55,6 @@ function PlantsTableItem(props) {
     }
   };
 
-  // const enableThisUser = async () => {
-  //   try {
-  //     await enableUser({ id: props.id }).unwrap();
-  //     console.log("USER ENABLED");
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // const disableThisUser = async () => {
-  //   try {
-  //     await disableUser({ id: props.id }).unwrap();
-  //     console.log("USER DISABLED");
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
   const handleDelete = async () => {
     try {
       await deletePlant(props.id).unwrap();
@@ -79,6 +62,10 @@ function PlantsTableItem(props) {
     } catch (error) {
       console.log("no es posible eliminar");
     }
+  };
+
+  const handleManage = () => {
+    navigate(routes.managePlant(props.id));
   };
 
   return (
@@ -142,13 +129,6 @@ function PlantsTableItem(props) {
               </svg>
             </button>
           </Link>
-
-          {/* <button className="text-slate-400 hover:text-slate-500 rounded-full">
-            <span className="sr-only">Download</span>
-            <svg className="w-8 h-8 fill-current" viewBox="0 0 32 32">
-              <path d="M16 20c.3 0 .5-.1.7-.3l5.7-5.7-1.4-1.4-4 4V8h-2v8.6l-4-4L9.6 14l5.7 5.7c.2.2.4.3.7.3zM9 22h14v2H9z" />
-            </svg>
-          </button> */}
           <button
             className="text-rose-500 hover:text-rose-600 rounded-full"
             onClick={handleDelete}
@@ -157,6 +137,25 @@ function PlantsTableItem(props) {
             <svg className="w-8 h-8 fill-current" viewBox="0 0 32 32">
               <path d="M13 15h2v6h-2zM17 15h2v6h-2z" />
               <path d="M20 9c0-.6-.4-1-1-1h-6c-.6 0-1 .4-1 1v2H8v2h1v10c0 .6.4 1 1 1h12c.6 0 1-.4 1-1V13h1v-2h-4V9zm-6 1h4v1h-4v-1zm7 3v9H11v-9h10z" />
+            </svg>
+          </button>
+
+          <button onClick={handleManage}>
+            <span className="sr-only">Manage</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon icon-tabler icon-tabler-caret-right"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="#ff2825"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M18 15l-6 -6l-6 6h12" transform="rotate(90 12 12)" />
             </svg>
           </button>
         </div>

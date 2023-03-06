@@ -44,14 +44,14 @@ function Sidebar() {
           <li className="mr-0.5 md:mr-0 md:mb-0.5">
             <NavLink
               end
-              to={routes.notifSettings}
+              to={routes.notifications}
               className={`flex items-center px-2.5 py-2 rounded whitespace-nowrap ${
-                pathname.includes(routes.notifSettings) && "bg-indigo-50"
+                pathname.includes(routes.notifications) && "bg-indigo-50"
               }`}
             >
               <svg
                 className={`w-4 h-4 shrink-0 fill-current text-slate-400 mr-2 ${
-                  pathname.includes(routes.notifSettings) && "text-indigo-400"
+                  pathname.includes(routes.notifications) && "text-indigo-400"
                 }`}
                 viewBox="0 0 16 16"
               >
@@ -59,7 +59,7 @@ function Sidebar() {
               </svg>
               <span
                 className={`text-sm font-medium ${
-                  pathname.includes(routes.notifSettings)
+                  pathname.includes(routes.notifications)
                     ? "text-primary"
                     : "hover:text-slate-700"
                 }`}

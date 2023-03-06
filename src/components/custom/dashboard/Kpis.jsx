@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 // import KpiSkeletonLoading from "../../pages/component/KpiSkeletonLoading";
 // import {
@@ -17,6 +18,7 @@ import { useSelector, useDispatch } from "react-redux";
 // } from "../../store/slice/kpiSlice";
 
 function Kpis() {
+  const { t } = useTranslation();
   //   const dispatch = useDispatch();
   //   const kpiTotalNumberOfOrders = useSelector(selectTotalNumberOfOrders);
   //   const kpiTotalAmountOfOrders = useSelector(selectTotalAmountOfOrders);
@@ -43,19 +45,19 @@ function Kpis() {
             <div className="bg-white">
               <div className="sm:flex sm:items-start">
                 <div className="text-center sm:mt-0 sm:ml-2 sm:text-left">
-                <p className="text-3xl font-bold text-black">
+                  <p className="text-3xl font-bold text-black">
                     52,591 <span className="text-base">kWh</span>
                     {/* {kpiTotalNumberOfOrders.orders_in_past_due} */}
                   </p>
                   <h3 className="text-sm leading-6 font-bold text-primary">
-                    Consume
+                    {t("dashboard.consume")}
                   </h3>
                   {/* {!kpiTotalNumberOfOrders.length ? ( */}
-                  
+
                   {/* ) : (
                       <p className="text-3xl font-bold text-black">Sin datos</p>
                     )} */}
-                    <p className="text-max font-bold">+ 11,706.00 (22.26%)</p>
+                  <p className="text-max font-bold">+ 11,706.00 (22.26%)</p>
                 </div>
               </div>
             </div>
@@ -69,19 +71,19 @@ function Kpis() {
             <div className="bg-white">
               <div className="sm:flex sm:items-start">
                 <div className="text-center sm:mt-0 sm:ml-2 sm:text-left">
-                <p className="text-3xl font-bold text-black">
+                  <p className="text-3xl font-bold text-black">
                     52,591 <span className="text-base">kW</span>
                     {/* {kpiTotalNumberOfOrders.orders_in_past_due} */}
                   </p>
                   <h3 className="text-sm leading-6 font-bold text-primary">
-                    Consume
+                    {t("dashboard.consume")}
                   </h3>
                   {/* {!kpiTotalNumberOfOrders.length ? ( */}
-                  
+
                   {/* ) : (
                       <p className="text-3xl font-bold text-black">Sin datos</p>
                     )} */}
-                    <p className="text-min font-bold">- 11,706.00 (22.26%)</p>
+                  <p className="text-min font-bold">- 11,706.00 (22.26%)</p>
                 </div>
               </div>
             </div>
@@ -95,19 +97,19 @@ function Kpis() {
             <div className="bg-white">
               <div className="sm:flex sm:items-start">
                 <div className="text-center sm:mt-0 sm:ml-2 sm:text-left">
-                <p className="text-3xl font-bold text-black">
+                  <p className="text-3xl font-bold text-black">
                     52,591 <span className="text-base">kW</span>
                     {/* {kpiTotalNumberOfOrders.orders_in_past_due} */}
                   </p>
                   <h3 className="text-sm leading-6 font-bold text-primary">
-                    Consume
+                    {t("dashboard.consume")}
                   </h3>
                   {/* {!kpiTotalNumberOfOrders.length ? ( */}
-                  
+
                   {/* ) : (
                       <p className="text-3xl font-bold text-black">Sin datos</p>
                     )} */}
-                    <p className="text-min font-bold">- 11,706.00 (22.26%)</p>
+                  <p className="text-min font-bold">- 11,706.00 (22.26%)</p>
                 </div>
               </div>
             </div>
@@ -121,19 +123,19 @@ function Kpis() {
             <div className="bg-white">
               <div className="sm:flex sm:items-start">
                 <div className="text-center sm:mt-0 sm:ml-2 sm:text-left">
-                <p className="text-3xl font-bold text-black">
+                  <p className="text-3xl font-bold text-black">
                     52,591 <span className="text-base">kW</span>
                     {/* {kpiTotalNumberOfOrders.orders_in_past_due} */}
                   </p>
                   <h3 className="text-sm leading-6 font-bold text-primary">
-                    Consume
+                    {t("dashboard.consume")}
                   </h3>
                   {/* {!kpiTotalNumberOfOrders.length ? ( */}
-                  
+
                   {/* ) : (
                       <p className="text-3xl font-bold text-black">Sin datos</p>
                     )} */}
-                    <p className="text-min font-bold">- 11,706.00 (22.26%)</p>
+                  <p className="text-min font-bold">- 11,706.00 (22.26%)</p>
                 </div>
               </div>
             </div>

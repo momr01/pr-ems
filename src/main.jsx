@@ -1,4 +1,5 @@
 import React from "react";
+import "./i18n";
 // import ReactDOM from "react-dom/client";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";

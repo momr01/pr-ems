@@ -1,6 +1,6 @@
 import { createEntityAdapter, createSelector } from "@reduxjs/toolkit";
-import { apiSlice } from "../../app/api/apiSlice";
-import url from "../../helpers/url";
+import { apiSlice } from "../../../app/api/apiSlice";
+import url from "../../../helpers/url";
 
 apiSlice.enhanceEndpoints({ addTagTypes: ["Plant"] });
 
@@ -10,12 +10,15 @@ const plantsAdapter = createEntityAdapter({
 
 const initialState = plantsAdapter.getInitialState();
 
-export const plantsSlice = apiSlice.injectEndpoints({
+export const plantsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getPlants: builder.query({
       query: () => url.backend.getPlants,
       transformResponse: (response) => {
         return plantsAdapter.setAll(initialState, response.plants);
+      },
+      transformErrorResponse: (response, meta, arg) => {
+        response.status;
       },
       providesTags: (result, error, arg) => [
         { type: "Plant", id: "LIST" },
@@ -53,9 +56,9 @@ export const {
   useAddPlantMutation,
   useUpdatePlantMutation,
   useDeletePlantMutation,
-} = plantsSlice;
+} = plantsApiSlice;
 
-export const selectPlantsResult = plantsSlice.endpoints.getPlants.select();
+export const selectPlantsResult = plantsApiSlice.endpoints.getPlants.select();
 
 const selectPlantsData = createSelector(
   selectPlantsResult,

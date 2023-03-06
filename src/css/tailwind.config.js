@@ -5,13 +5,25 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#06184a",
+        //primary: "#06184a",
+        // primary: "#AC3B61",
+        //primary: "#D4A59A", color1
+        //primary: "#E3AFBC", color2
+        //primary: "#C5CBE3", color3
+        //primary: "#EDC7B7", color4
+        //primary: "#86c232", color5
+        //primary: "#f4976C",
+        // primary: "#4E74BB",
+        //primary: "#3B6BC2",
         secondary: "#D8F6F0",
         third: "#839DE2",
-        hover: "#116361",
-        green: "#93d803",
+        //hover: "#116361",
+        //green: "#93d803",
+        green: "#A8B5E0",
+        primary: "#3e9b68",
+        hover: "#eaf5ef",
         min: "#4de0ad",
-        max: "#ed5251"
+        max: "#ed5251",
       },
       boxShadow: {
         DEFAULT:
@@ -44,7 +56,7 @@ module.exports = {
         md: "768px",
         lg: "1024px",
         xl: "1280px",
-        "2xl": "1536px"
+        "2xl": "1536px",
       },
       borderWidth: {
         3: "3px",

@@ -1,6 +1,11 @@
-import React from "react";
+import { useDispatch } from "react-redux";
+import {
+  setPagination,
+  setSearchUser,
+} from "../../../features/users/usersSlice";
 
-function SearchForm({ placeholder }) {
+function SearchPlants({ placeholder }) {
+  const dispatch = useDispatch();
   return (
     <form className="relative">
       <label htmlFor="action-search" className="sr-only">
@@ -11,6 +16,10 @@ function SearchForm({ placeholder }) {
         className="form-input pl-9 focus:border-slate-300"
         type="search"
         placeholder={placeholder}
+        onChange={(e) => {
+          dispatch(setPagination({ name: "page", value: 1 }));
+          dispatch(setSearchUser(e.target.value));
+        }}
       />
       <button
         className="absolute inset-0 right-auto group"
@@ -30,8 +39,4 @@ function SearchForm({ placeholder }) {
   );
 }
 
-SearchForm.defaultProps = {
-  placeholder: "Search…",
-};
-
-export default SearchForm;
+export default SearchPlants;

@@ -1,14 +1,15 @@
+import { t } from "i18next";
 import { FormPlant, Layout, WithRole } from "../../../components/custom";
 
 const AddPlant = () => {
   return (
-    <Layout section="Add Plant" obs="Management">
+    <Layout section={t("plants.form.addPlant")} obs=  {t('sidebar.management')}>
       <section>
         <header className="mb-6">
           <h1 className="text-2xl md:text-3xl text-slate-800 font-bold mb-2">
-            Create new plant
+            {t("plants.form.createTitle")}
           </h1>
-          <p>Please complete each input to create a new plant</p>
+          <p> {t("plants.form.createDescription")}</p>
         </header>
 
         <div>

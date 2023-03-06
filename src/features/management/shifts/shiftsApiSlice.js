@@ -1,6 +1,6 @@
 import { createEntityAdapter, createSelector } from "@reduxjs/toolkit";
-import { apiSlice } from "../../app/api/apiSlice";
-import url from "../../helpers/url";
+import { apiSlice } from "../../../app/api/apiSlice";
+import url from "../../../helpers/url";
 
 apiSlice.enhanceEndpoints({ addTagTypes: ["Shift"] });
 
@@ -10,7 +10,7 @@ const shiftsAdapter = createEntityAdapter({
 
 const initialState = shiftsAdapter.getInitialState();
 
-export const shiftsSlice = apiSlice.injectEndpoints({
+export const shiftsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getShifts: builder.query({
       query: () => url.backend.getShifts,
@@ -53,9 +53,9 @@ export const {
   useAddShiftMutation,
   useUpdateShiftMutation,
   useDeleteShiftMutation,
-} = shiftsSlice;
+} = shiftsApiSlice;
 
-export const selectShiftsResult = shiftsSlice.endpoints.getShifts.select();
+export const selectShiftsResult = shiftsApiSlice.endpoints.getShifts.select();
 
 const selectShiftsData = createSelector(
   selectShiftsResult,

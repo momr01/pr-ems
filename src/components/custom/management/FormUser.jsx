@@ -8,7 +8,7 @@ import {
   useGetRolesQuery,
   useGetUsersQuery,
   useUpdateUserMutation,
-} from "../../../features/users/usersSlice";
+} from "../../../features/users/usersApiSlice";
 import { useSelector } from "react-redux";
 import icons from "../../../images/custom/icons";
 

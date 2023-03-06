@@ -1,6 +1,11 @@
-import React from "react";
+import { useDispatch } from "react-redux";
+import {
+  setPagination,
+  setSearchSensor,
+} from "../../../features/management/sensors/sensorsSlice";
 
-function SearchForm({ placeholder }) {
+const SearchSensors = ({ placeholder }) => {
+  const dispatch = useDispatch();
   return (
     <form className="relative">
       <label htmlFor="action-search" className="sr-only">
@@ -11,6 +16,10 @@ function SearchForm({ placeholder }) {
         className="form-input pl-9 focus:border-slate-300"
         type="search"
         placeholder={placeholder}
+        onChange={(e) => {
+          dispatch(setPagination({ name: "page", value: 1 }));
+          dispatch(setSearchSensor(e.target.value));
+        }}
       />
       <button
         className="absolute inset-0 right-auto group"
@@ -28,10 +37,6 @@ function SearchForm({ placeholder }) {
       </button>
     </form>
   );
-}
-
-SearchForm.defaultProps = {
-  placeholder: "Search…",
 };
 
-export default SearchForm;
+export default SearchSensors;

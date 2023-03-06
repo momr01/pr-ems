@@ -1,5 +1,3 @@
-import React from "react";
-
 function DeleteButton({ selectedItems }) {
   return (
     <div className={`${selectedItems.length < 1 && "hidden"}`}>

@@ -1,35 +1,41 @@
+//import { t } from "i18next";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Layout } from "../../components/custom";
 
 const Maintenance = () => {
+  const { t } = useTranslation();
   const [companySetting, setCompanySetting] = useState(true);
 
   return (
-    <Layout section="Maintenance" obs="All Plants">
+    <Layout section={t("sidebar.maintenance")} obs={t("maintenance.allPlants")}>
       <div className="grid grid-cols-12 gap-6">
         <section className="flex flex-col col-span-full sm:col-span-5">
           <div className="bg-white shadow-lg rounded-sm border border-slate-200 px-5 pt-5 pb-8 mb-5">
             <h2 className="text-black font-bold text-lg">
-              Plant and Equipment Maintenance
+              {t("maintenance.plantEquipment.title")}
             </h2>
-            <p className="text-black mb-5">HVAC System</p>
+            <p className="text-black mb-5">
+              {" "}
+              {t("maintenance.plantEquipment.description")}
+            </p>
 
             <div className="flex justify-around">
               <button className="border border-slate-400 w-24 h-24">
-                Icon 2
+                {t("maintenance.plantEquipment.icon")} 2
               </button>
               <button className="border border-slate-400 w-24 h-24">
-                Icon 1
+                {t("maintenance.plantEquipment.icon")} 1
               </button>
               <button className="border border-slate-400 w-24 h-24">
-                Icon 3
+                {t("maintenance.plantEquipment.icon")} 3
               </button>
             </div>
           </div>
 
           <div className="bg-white shadow-lg rounded-sm border border-slate-200 px-5 pt-5 pb-7 mb-5">
             <h2 className="text-black font-bold text-lg mb-5">
-              HVAC Suystems Operational Overview
+              {t("maintenance.hvacOverview.title")}
             </h2>
 
             <div className="overflow-x-auto">
@@ -38,16 +44,25 @@ const Maintenance = () => {
                 <thead className="text-base text-black font-bold rounded-sm">
                   <tr>
                     <th className="p-2 whitespace-nowrap">
-                      <div className="font-semibold text-center">Brand</div>
+                      <div className="font-semibold text-center">
+                        {" "}
+                        {t("maintenance.hvacOverview.tableBrand")}
+                      </div>
                     </th>
                     <th className="p-2 whitespace-nowrap">
-                      <div className="font-semibold text-center">Indoor</div>
+                      <div className="font-semibold text-center">
+                        {t("maintenance.hvacOverview.tableIndoor")}
+                      </div>
                     </th>
                     <th className="p-2 whitespace-nowrap">
-                      <div className="font-semibold text-center">Outdoor</div>
+                      <div className="font-semibold text-center">
+                        {t("maintenance.hvacOverview.tableOutdoor")}
+                      </div>
                     </th>
                     <th className="p-2 whitespace-nowrap">
-                      <div className="font-semibold text-center">Status</div>
+                      <div className="font-semibold text-center">
+                        {t("maintenance.hvacOverview.tableStatus")}
+                      </div>
                     </th>
                   </tr>
                 </thead>
@@ -124,7 +139,7 @@ const Maintenance = () => {
           <div className="bg-white shadow-lg rounded-sm border border-slate-200 px-5 pt-5 pb-7">
             <h2 className="text-black font-bold text-lg mb-5">
               {" "}
-              Last Maintenance Orders Created
+              {t("maintenance.lastMaintenance.title")}
             </h2>
             <div className="overflow-x-auto">
               <table className="table-auto w-full border border-slate-300">
@@ -133,17 +148,17 @@ const Maintenance = () => {
                   <tr>
                     <th className="p-2 whitespace-nowrap">
                       <div className="font-semibold text-center text-base">
-                        No. Order
+                        {t("maintenance.lastMaintenance.tableOrder")}
                       </div>
                     </th>
                     <th className="p-2 whitespace-nowrap">
                       <div className="font-semibold text-center text-base">
-                        Created
+                        {t("maintenance.lastMaintenance.tableCreated")}
                       </div>
                     </th>
                     <th className="p-2 whitespace-nowrap">
                       <div className="font-semibold text-center text-base">
-                        Status
+                        {t("maintenance.lastMaintenance.tableStatus")}
                       </div>
                     </th>
                   </tr>
@@ -186,19 +201,19 @@ const Maintenance = () => {
             <div className="w-1/3 flex flex-col md:flex-row border-r-2 border-slate-500 justify-between px-2 relative">
               <p className="text-red-500 text-4xl font-medium">03</p>
               <p className="text-black text-xs md:text-base md:absolute md:right-2 md:bottom-1">
-                System Error
+                {t("maintenance.systemError")}
               </p>
             </div>
             <div className="w-1/3 flex flex-col md:flex-row border-r-2 border-slate-500 justify-between px-2 relative">
               <p className="text-yellow-500 text-4xl font-medium">02</p>
               <p className="text-black text-xs md:text-base md:absolute md:right-2 md:bottom-1">
-                Maintenance
+                {t("sidebar.maintenance")}
               </p>
             </div>
             <div className="w-1/3 flex flex-col md:flex-row justify-between px-2 relative">
               <p className="text-slate-800 text-4xl font-medium mr-5">11</p>
               <p className="text-black text-xs md:text-base md:absolute md:right-2 md:bottom-1">
-                Not Connected
+                {t("maintenance.notConnected")}
               </p>
             </div>
           </div>
@@ -209,19 +224,34 @@ const Maintenance = () => {
               <thead className="text-base text-black rounded-sm">
                 <tr>
                   <th className="p-2 whitespace-nowrap">
-                    <div className="font-semibold text-left">Error Code</div>
+                    <div className="font-semibold text-left">
+                      {" "}
+                      {t("maintenance.tableErrorCode")}
+                    </div>
                   </th>
                   <th className="p-2 whitespace-nowrap">
-                    <div className="font-semibold text-center">Datetime</div>
+                    <div className="font-semibold text-center">
+                      {" "}
+                      {t("maintenance.tableDateTime")}
+                    </div>
                   </th>
                   <th className="p-2 whitespace-nowrap">
-                    <div className="font-semibold text-center">Plant</div>
+                    <div className="font-semibold text-center">
+                      {" "}
+                      {t("maintenance.tablePlant")}
+                    </div>
                   </th>
                   <th className="p-2 whitespace-nowrap">
-                    <div className="font-semibold text-center">Description</div>
+                    <div className="font-semibold text-center">
+                      {" "}
+                      {t("maintenance.tableDescription")}
+                    </div>
                   </th>
                   <th className="p-2 whitespace-nowrap">
-                    <div className="font-semibold text-center">Action</div>
+                    <div className="font-semibold text-center">
+                      {" "}
+                      {t("maintenance.tableAction")}
+                    </div>
                   </th>
                 </tr>
               </thead>

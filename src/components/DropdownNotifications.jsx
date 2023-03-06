@@ -1,6 +1,143 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
+import routes from "../helpers/routes";
 import Transition from "../utils/Transition";
+
+const recentNot = {
+  recent_notifications: 2,
+  authenticated_user: {
+    id: 25,
+    username: "delia90",
+    first_name: "Delia",
+    last_name: "Larousse Del Alivio",
+    email: "alma.sala80@email.com",
+    role: {
+      role_id: 2,
+      role_name: "Empleado de mantenimiento",
+    },
+    is_active: true,
+    data_entry: "2023-01-19T22:12:26.567460Z",
+  },
+};
+
+const notification_data = [
+  {
+    id: 20,
+    user: {
+      id: 25,
+      username: "delia90",
+      first_name: "Delia",
+      last_name: "Larousse Del Alivio",
+      email: "alma.sala80@email.com",
+      role: {
+        role_id: 2,
+        role_name: "Empleado de mantenimiento",
+      },
+      is_active: true,
+      data_entry: "2023-01-19T22:12:26.567460Z",
+    },
+    notification: {
+      id: 4,
+      hour: "14:39:31",
+      description:
+        "error: 400 description: Error causado por falla de lectura en sensor classification: Critico",
+      sensor_error: {
+        id: 20,
+        date: "2023-02-21",
+        hour: "14:39:31",
+        error: {
+          code: "400",
+          description: "Error causado por falla de lectura en sensor",
+          error_classification: {
+            id: 1,
+            classification: "Critico",
+          },
+        },
+        sensor: {
+          id: 2,
+          name: "sensor-83jwp",
+          consume_type: {
+            id: 1,
+            type_name: "Electricity",
+          },
+          plant: {
+            id: 9,
+            name: "Plant 2",
+            address: {
+              id: 17,
+              country: "Mexico",
+              state: "Veracruz",
+              city: "Orizaba",
+              district: "Coatzacoalcos",
+              street: "La soledad",
+              number: "139",
+              zip_code: "96390",
+            },
+          },
+        },
+      },
+    },
+    is_checked: false,
+  },
+  {
+    id: 8,
+    user: {
+      id: 25,
+      username: "delia90",
+      first_name: "Delia",
+      last_name: "Larousse Del Alivio",
+      email: "alma.sala80@email.com",
+      role: {
+        role_id: 2,
+        role_name: "Empleado de mantenimiento",
+      },
+      is_active: true,
+      data_entry: "2023-01-19T22:12:26.567460Z",
+    },
+    notification: {
+      id: 2,
+      hour: "14:34:36",
+      description:
+        "error: 323 description: Error de conexion en el sensor classification: Critico",
+      sensor_error: {
+        id: 18,
+        date: "2023-02-21",
+        hour: "14:34:36",
+        error: {
+          code: "323",
+          description: "Error de conexion en el sensor",
+          error_classification: {
+            id: 1,
+            classification: "Critico",
+          },
+        },
+        sensor: {
+          id: 2,
+          name: "sensor-83jwp",
+          consume_type: {
+            id: 1,
+            type_name: "Electricity",
+          },
+          plant: {
+            id: 9,
+            name: "Plant 2",
+            address: {
+              id: 17,
+              country: "Mexico",
+              state: "Veracruz",
+              city: "Orizaba",
+              district: "Coatzacoalcos",
+              street: "La soledad",
+              number: "139",
+              zip_code: "96390",
+            },
+          },
+        },
+      },
+    },
+    is_checked: false,
+  },
+];
 
 function DropdownNotifications({ align }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -66,7 +203,9 @@ function DropdownNotifications({ align }) {
           <path d="M10 5a2 2 0 0 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6" />
           <path d="M9 17v1a3 3 0 0 0 6 0v-1" />
         </svg>
-        <div className="absolute top-0 right-0 w-4 h-4 bg-rose-500 border-2 border-white rounded-full text-[9px] text-white">4</div>
+        <div className="absolute top-0 right-0 w-4 h-4 bg-rose-500 border-2 border-white rounded-full text-[9px] text-white">
+          {recentNot?.recent_notifications}
+        </div>
       </button>
 
       <Transition
@@ -90,67 +229,31 @@ function DropdownNotifications({ align }) {
             Notifications
           </div>
           <ul>
-            <li className="border-b border-slate-200 last:border-0">
-              <Link
-                className="block py-2 px-4 hover:bg-slate-50"
-                to="#0"
-                onClick={() => setDropdownOpen(!dropdownOpen)}
-              >
-                <span className="block text-sm mb-2">
-                  📣{" "}
-                  <span className="font-medium text-slate-800">
-                    Edit your information in a swipe
-                  </span>{" "}
-                  Sint occaecat cupidatat non proident, sunt in culpa qui
-                  officia deserunt mollit anim.
-                </span>
-                <span className="block text-xs font-medium text-slate-400">
-                  Feb 12, 2021
-                </span>
-              </Link>
-            </li>
-            <li className="border-b border-slate-200 last:border-0">
-              <Link
-                className="block py-2 px-4 hover:bg-slate-50"
-                to="#0"
-                onClick={() => setDropdownOpen(!dropdownOpen)}
-              >
-                <span className="block text-sm mb-2">
-                  📣{" "}
-                  <span className="font-medium text-slate-800">
-                    Edit your information in a swipe
-                  </span>{" "}
-                  Sint occaecat cupidatat non proident, sunt in culpa qui
-                  officia deserunt mollit anim.
-                </span>
-                <span className="block text-xs font-medium text-slate-400">
-                  Feb 9, 2021
-                </span>
-              </Link>
-            </li>
-            <li className="border-b border-slate-200 last:border-0">
-              <Link
-                className="block py-2 px-4 hover:bg-slate-50"
-                to="#0"
-                onClick={() => setDropdownOpen(!dropdownOpen)}
-              >
-                <span className="block text-sm mb-2">
-                  🚀
-                  <span className="font-medium text-slate-800">
-                    Say goodbye to paper receipts!
-                  </span>{" "}
-                  Sint occaecat cupidatat non proident, sunt in culpa qui
-                  officia deserunt mollit anim.
-                </span>
-                <span className="block text-xs font-medium text-slate-400">
-                  Jan 24, 2020
-                </span>
-              </Link>
-            </li>
+            {notification_data?.map((not, i) => (
+              <li key={i} className="border-b border-slate-200 last:border-0">
+                <Link
+                  className="block py-2 px-4 hover:bg-slate-50"
+                  to="#0"
+                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                >
+                  <span className="block text-sm mb-2">
+                    📣{" "}
+                    <span className="font-medium text-slate-800">
+                      {not.notification.sensor_error.error.description}
+                    </span>
+                    {" - "}
+                    {not.notification.description}
+                  </span>
+                  <span className="block text-xs font-medium text-slate-400">
+                    {not.notification.sensor_error.date}
+                  </span>
+                </Link>
+              </li>
+            ))}
           </ul>
-          {/* <div className="text-xs font-semibold text-slate-400 uppercase pt-1.5 pb-2 px-4 text-right">
-            <Link to="/">See more</Link>
-          </div> */}
+          <div className="text-xs font-semibold text-slate-400 uppercase pt-1.5 pb-2 px-4 text-right">
+            <Link to={routes.notifications}>See all</Link>
+          </div>
         </div>
       </Transition>
     </div>

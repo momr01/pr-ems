@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useDeleteShiftMutation } from "../../../features/plants/shiftsSlice";
+import { useDeleteShiftMutation } from "../../../features/management/shifts/shiftsApiSlice";
 import routes from "../../../helpers/routes";
 
 function ShiftsTableItem(props) {

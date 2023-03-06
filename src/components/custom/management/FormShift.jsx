@@ -7,7 +7,7 @@ import {
   useAddShiftMutation,
   useGetShiftsQuery,
   useUpdateShiftMutation,
-} from "../../../features/plants/shiftsSlice";
+} from "../../../features/management/shifts/shiftsApiSlice";
 import { useSelector } from "react-redux";
 
 const FormShift = () => {

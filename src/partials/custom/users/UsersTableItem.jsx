@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import {
   useDisableUserMutation,
   useEnableUserMutation,
-} from "../../../features/users/usersSlice";
+} from "../../../features/users/usersApiSlice";
 import routes from "../../../helpers/routes";
 
 function UsersTableItem(props) {

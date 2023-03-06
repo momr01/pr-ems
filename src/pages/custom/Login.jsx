@@ -113,42 +113,42 @@ const Login = () => {
      * 
      */
 
-    // console.log({ user, pwd });
-    // dispatch(setCredentials({ user, accessToken: pwd }));
+    console.log({ user, pwd });
+    dispatch(setCredentials({ user, accessToken: pwd, role: "Administrador" }));
 
-    const json = {
-      username: user,
-      password: pwd,
-    };
+    // const json = {
+    //   username: user,
+    //   password: pwd,
+    // };
 
-    try {
-      // const userData = await login({ user, pwd }).unwrap();
-      const userData = await login(json).unwrap();
-      // dispatch(setCredentials({ ...userData, user }));
-      console.log(userData);
-      dispatch(
-        setCredentials({
-          user,
-          accessToken: userData.token,
-          role: userData.id_role,
-        })
-      );
-      setUser("");
-      setPwd("");
-      //navigate(routes.dashboard);
-    } catch (err) {
-      if (!err?.originalStatus) {
-        // isLoading: true until timeout occurs
-        setErrMsg("No Server Response");
-      } else if (err.originalStatus === 400) {
-        setErrMsg("Missing Username or Password");
-      } else if (err.originalStatus === 401) {
-        setErrMsg("Unauthorized");
-      } else {
-        setErrMsg("Login Failed");
-      }
-      errRef.current.focus();
-    }
+    // try {
+      
+    //   const userData = await login(json).unwrap();
+    
+    //   console.log(userData);
+    //   dispatch(
+    //     setCredentials({
+    //       user,
+    //       accessToken: userData.token,
+    //       role: userData.id_role,
+    //     })
+    //   );
+    //   setUser("");
+    //   setPwd("");
+    //   //navigate(routes.dashboard);
+    // } catch (err) {
+    //   if (!err?.originalStatus) {
+    //     // isLoading: true until timeout occurs
+    //     setErrMsg("No Server Response");
+    //   } else if (err.originalStatus === 400) {
+    //     setErrMsg("Missing Username or Password");
+    //   } else if (err.originalStatus === 401) {
+    //     setErrMsg("Unauthorized");
+    //   } else {
+    //     setErrMsg("Login Failed");
+    //   }
+    //   errRef.current.focus();
+    // }
   };
 
   const handleUserInput = (e) => setUser(e.target.value);

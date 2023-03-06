@@ -1,101 +1,53 @@
-import { createEntityAdapter, createSelector } from "@reduxjs/toolkit";
-import { apiSlice } from "../../app/api/apiSlice";
-import url from "../../helpers/url";
+import { createAction, createSlice } from "@reduxjs/toolkit";
 
-apiSlice.enhanceEndpoints({ addTagTypes: ["User"] });
+const initialState = {
+  filterBtn: {
+    all: 0,
+  },
+  filterActive: "all",
+  searchUser: "",
+  pagination: {
+    itemsPerPage: [0, 1],
+    page: 1,
+    total: 0,
+  },
+  dataFiltered: [],
+};
 
-const usersAdapter = createEntityAdapter({
-  //selectId: (user) => user.id
-});
-
-const initialState = usersAdapter.getInitialState();
-
-export const usersSlice = apiSlice.injectEndpoints({
-  endpoints: (builder) => ({
-    getUsers: builder.query({
-      query: () => url.backend.getAllUsers,
-      transformResponse: (response) => {
-        return usersAdapter.setAll(initialState, response.users);
-      },
-      providesTags: (result, error, arg) => [
-        { type: "User", id: "LIST" },
-        ...result.ids.map((id) => ({ type: "User", id })),
-      ],
-    }),
-    addUser: builder.mutation({
-      query: (body) => ({
-        url: url.backend.userRegister,
-        method: "POST",
-        body,
-      }),
-      invalidatesTags: ["User"],
-    }),
-    updateUser: builder.mutation({
-      query: ({ id, body }) => ({
-        url: url.backend.updateProfile(id),
-        method: "PUT",
-        body,
-      }),
-      invalidatesTags: ["User"],
-    }),
-    enableUser: builder.mutation({
-      query: ({ id }) => ({
-        url: url.backend.enableUser(id),
-        method: "PUT",
-      }),
-      invalidatesTags: ["User"],
-    }),
-    disableUser: builder.mutation({
-      query: ({ id }) => ({
-        url: url.backend.disableUser(id),
-        method: "PUT",
-      }),
-      invalidatesTags: ["User"],
-    }),
-    changePwd: builder.mutation({
-      query: ({ id, body }) => ({
-        url: url.backend.changePwd(id),
-        method: "PUT",
-        body,
-      }),
-      invalidatesTags: ["USER"],
-    }),
-    getRoles: builder.query({
-      query: () => url.backend.getRoles,
-      transformResponse: (response) => {
-        return response.roles;
-      },
-    }),
-    getLanguages: builder.query({
-      query: () => url.backend.languages,
-      transformResponse: (response) => {
-        return response.available_languages;
-      },
-    }),
-  }),
+const usersSlice = createSlice({
+  initialState,
+  name: "users",
+  reducers: {
+    setFilterBtn: (state, action) => {
+      state.filterBtn[action.payload.name] = action.payload.value;
+    },
+    setFilterActive: (state, action) => {
+      state.filterActive = action.payload;
+    },
+    setSearchUser: (state, action) => {
+      state.searchUser = action.payload;
+    },
+    setPagination: (state, action) => {
+      state.pagination[action.payload.name] = action.payload.value;
+    },
+    setDataFiltered: (state, action) => {
+      state.dataFiltered = action.payload;
+    },
+  },
 });
 
 export const {
-  useGetUsersQuery,
-  useAddUserMutation,
-  useUpdateUserMutation,
-  useEnableUserMutation,
-  useDisableUserMutation,
-  useGetRolesQuery,
-  useGetLanguagesQuery,
-} = usersSlice;
+  setFilterBtn,
+  setFilterActive,
+  setSearchUser,
+  setPagination,
+  setDataFiltered,
+} = usersSlice.actions;
 
-export const selectUsersResult = usersSlice.endpoints.getUsers.select();
+export const selectFilterBtn = (state) => state.users.filterBtn;
+export const selectFilterActive = (state) => state.users.filterActive;
+export const selectSearchUser = (state) => state.users.searchUser;
+export const selectPagination = (state) => state.users.pagination;
+export const selectDataFiltered = (state) => state.users.dataFiltered;
 
-const selectUsersData = createSelector(
-  selectUsersResult,
-  (usersResult) => usersResult.data
-);
-
-export const {
-  selectAll: selectAllUsers,
-  selectById: selectUserById,
-  selectIds: selectUsersIds,
-} = usersAdapter.getSelectors(
-  (state) => selectUsersData(state) ?? initialState
-);
+export default usersSlice.reducer;

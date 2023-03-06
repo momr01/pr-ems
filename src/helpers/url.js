@@ -23,6 +23,16 @@ const url = {
     shiftRegister: "/plants/shift/register/",
     updateShift: (id) => `/plants/shift/update/${id}/`,
     deleteShift: (id) => `/plants/shift/delete/${id}/`,
+    getEquipments: "/plants/equipment/get-equipments/",
+    equipmentRegister: "/plants/equipment/register/",
+    updateEquipment: (id) => `/plants/equipment/update/${id}/`,
+    deleteEquipment: (id) => `/plants/equipment/delete/${id}/`,
+    getEqTypes: "/plants/equipment/get-equipment-types/",
+    shiftAssignRegister: (idPlant, id) =>
+      `/plants/${idPlant}/assignment/shift/${id}/`,
+    getShiftAssign: (id) => `/plants/${id}/get-shifts-by-plant/`,
+    deleteShiftAssign: (idPlant, id) =>
+      `/plants/${idPlant}/delete-assignment/shift/${id}/`,
   },
 };
 

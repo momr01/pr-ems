@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import {
   DateSelect,
   FilterButton,
@@ -7,6 +8,8 @@ import {
 } from "../../components/custom";
 
 const Reports = () => {
+  const { t } = useTranslation();
+
   const [selectedItems, setSelectedItems] = useState([]);
 
   const handleSelectedItems = (selectedItems) => {
@@ -14,7 +17,7 @@ const Reports = () => {
   };
 
   return (
-    <Layout section="Reports" obs="Overview">
+    <Layout section={t("sidebar.reports")} obs={t("dashboard.overview")}>
       <main>
         <div className="w-full max-w-9xl mx-auto">
           {/* Page header */}
@@ -42,7 +45,9 @@ const Reports = () => {
                 >
                   <path d="M15 7H9V1c0-.6-.4-1-1-1S7 .4 7 1v6H1c-.6 0-1 .4-1 1s.4 1 1 1h6v6c0 .6.4 1 1 1s1-.4 1-1V9h6c.6 0 1-.4 1-1s-.4-1-1-1z" />
                 </svg>
-                <span className="hidden xs:block ml-2">Add Report</span>
+                <span className="hidden xs:block ml-2">
+                  {t("reports.addReport")}
+                </span>
               </button>
             </div>
           </div>

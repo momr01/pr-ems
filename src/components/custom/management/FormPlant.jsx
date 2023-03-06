@@ -7,8 +7,9 @@ import {
   useAddPlantMutation,
   useGetPlantsQuery,
   useUpdatePlantMutation,
-} from "../../../features/plants/plantsSlice";
+} from "../../../features/management/plants/plantsApiSlice";
 import { useSelector } from "react-redux";
+import { t } from "i18next";
 
 const FormPlant = () => {
   const navigate = useNavigate();
@@ -80,7 +81,7 @@ const FormPlant = () => {
         <div className="md:flex space-y-4 md:space-y-0 md:space-x-4">
           <div className="flex-1">
             <label className="block text-sm font-medium mb-1" htmlFor="name">
-              Name <span className="text-rose-500">*</span>
+              {t("plants.table.name")} <span className="text-rose-500">*</span>
             </label>
             <input
               id="name"
@@ -89,7 +90,7 @@ const FormPlant = () => {
               {...register("name", {
                 required: {
                   value: true,
-                  message: "This field is required",
+                  message: t("plants.form.inputRequired"),
                 },
               })}
             />
@@ -101,7 +102,8 @@ const FormPlant = () => {
           </div>
           <div className="flex-1">
             <label className="block text-sm font-medium mb-1" htmlFor="country">
-              Country <span className="text-rose-500">*</span>
+              {t("plants.table.country")}{" "}
+              <span className="text-rose-500">*</span>
             </label>
             <input
               id="country"
@@ -110,7 +112,7 @@ const FormPlant = () => {
               {...register("country", {
                 required: {
                   value: true,
-                  message: "This field is required",
+                  message: t("plants.form.inputRequired"),
                 },
               })}
             />
@@ -125,7 +127,7 @@ const FormPlant = () => {
         <div className="md:flex space-y-4 md:space-y-0 md:space-x-4">
           <div className="flex-1">
             <label className="block text-sm font-medium mb-1" htmlFor="state">
-              State <span className="text-rose-500">*</span>
+              {t("plants.table.state")} <span className="text-rose-500">*</span>
             </label>
             <input
               id="state"
@@ -134,7 +136,7 @@ const FormPlant = () => {
               {...register("state", {
                 required: {
                   value: true,
-                  message: "This field is required",
+                  message: t("plants.form.inputRequired"),
                 },
               })}
             />
@@ -146,7 +148,7 @@ const FormPlant = () => {
           </div>
           <div className="flex-1">
             <label className="block text-sm font-medium mb-1" htmlFor="city">
-              City <span className="text-rose-500">*</span>
+              {t("plants.table.city")} <span className="text-rose-500">*</span>
             </label>
             <input
               id="city"
@@ -155,7 +157,7 @@ const FormPlant = () => {
               {...register("city", {
                 required: {
                   value: true,
-                  message: "This field is required",
+                  message: t("plants.form.inputRequired"),
                 },
               })}
             />
@@ -173,7 +175,8 @@ const FormPlant = () => {
               className="block text-sm font-medium mb-1"
               htmlFor="district"
             >
-              District <span className="text-rose-500">*</span>
+              {t("plants.table.district")}{" "}
+              <span className="text-rose-500">*</span>
             </label>
             <input
               id="district"
@@ -182,7 +185,7 @@ const FormPlant = () => {
               {...register("district", {
                 required: {
                   value: true,
-                  message: "This field is required",
+                  message: t("plants.form.inputRequired"),
                 },
               })}
             />
@@ -207,7 +210,8 @@ const FormPlant = () => {
         </div> */}
           <div className="flex-1">
             <label className="block text-sm font-medium mb-1" htmlFor="street">
-              Street <span className="text-rose-500">*</span>
+              {t("plants.table.street")}{" "}
+              <span className="text-rose-500">*</span>
             </label>
             <input
               id="street"
@@ -216,7 +220,7 @@ const FormPlant = () => {
               {...register("street", {
                 required: {
                   value: true,
-                  message: "This field is required",
+                  message: t("plants.form.inputRequired"),
                 },
               })}
             />
@@ -231,7 +235,8 @@ const FormPlant = () => {
         <div className="md:flex space-y-4 md:space-y-0 md:space-x-4">
           <div className="flex-1">
             <label className="block text-sm font-medium mb-1" htmlFor="number">
-              Number <span className="text-rose-500">*</span>
+              {t("plants.table.number")}{" "}
+              <span className="text-rose-500">*</span>
             </label>
             <input
               id="number"
@@ -240,7 +245,7 @@ const FormPlant = () => {
               {...register("number", {
                 required: {
                   value: true,
-                  message: "This field is required",
+                  message: t("plants.form.inputRequired"),
                 },
               })}
             />
@@ -255,7 +260,8 @@ const FormPlant = () => {
               className="block text-sm font-medium mb-1"
               htmlFor="zip_code"
             >
-              Zip Code <span className="text-rose-500">*</span>
+              {t("plants.table.zipCode")}{" "}
+              <span className="text-rose-500">*</span>
             </label>
             <input
               id="zip_code"
@@ -264,7 +270,7 @@ const FormPlant = () => {
               {...register("zip_code", {
                 required: {
                   value: true,
-                  message: "This field is required",
+                  message: t("plants.form.inputRequired"),
                 },
               })}
             />
@@ -282,7 +288,7 @@ const FormPlant = () => {
               type="button"
               className="btn bg-gray-500 border-slate-200 hover:border-slate-300 text-white mr-5 h-[100%]"
             >
-              Cancel
+              {t("plants.form.cancel")}
             </button>
           </Link>
 
@@ -290,10 +296,15 @@ const FormPlant = () => {
             {isLoading || isLoadingEdit ? (
               <section className="justify-center items-center flex">
                 <div className="loader"></div>
-                <span className="ml-3 text-white font-semibold">Cargando</span>
+                <span className="ml-3 text-white font-semibold">
+                  {" "}
+                  {t("plants.form.loading")}
+                </span>
               </section>
             ) : (
-              <span>{id ? "Update" : "Create"}</span>
+              <span>
+                {id ? t("plants.form.update") : t("plants.form.create")}
+              </span>
             )}
           </button>
         </div>

@@ -7,6 +7,7 @@ import UserMenu from "../components/DropdownProfile";
 import images from "../images/custom";
 import { LangSelect } from "../components/custom";
 
+
 function Header({ sidebarOpen, setSidebarOpen }) {
   const [searchModalOpen, setSearchModalOpen] = useState(false);
 
@@ -35,7 +36,7 @@ function Header({ sidebarOpen, setSidebarOpen }) {
               </svg>
             </button>
 
-            <div className="mr-5 hidden lg:block">
+            {/* <div className="mr-5 hidden lg:block">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="icon icon-tabler icon-tabler-menu-2"
@@ -53,7 +54,7 @@ function Header({ sidebarOpen, setSidebarOpen }) {
                 <line x1="4" y1="12" x2="20" y2="12" />
                 <line x1="4" y1="18" x2="20" y2="18" />
               </svg>
-            </div>
+            </div> */}
 
             {/* <button className="flex ml-5 lg:ml-0">
               <div className="w-[30px] h-[30px] rounded-[50%] mr-3">
@@ -64,11 +65,8 @@ function Header({ sidebarOpen, setSidebarOpen }) {
               </span>
             </button> */}
             <div className="ml-1">
-            <LangSelect />
-
+              <LangSelect />
             </div>
-
-           
           </div>
 
           {/* Header: Right side */}

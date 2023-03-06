@@ -1,6 +1,6 @@
-import { Layout, Notifications, Panel, Sidebar } from "../../components/custom";
+import { Layout, MyNotifications, Sidebar } from "../../components/custom";
 
-const ProfilePanel = () => {
+const Notifications = () => {
   return (
     <Layout section="Profile" obs="My Profile">
       <main>
@@ -8,7 +8,7 @@ const ProfilePanel = () => {
           <div className="bg-white shadow-lg rounded-sm mb-8">
             <div className="flex flex-col md:flex-row md:-mr-px">
               <Sidebar />
-              <Notifications />
+              <MyNotifications />
             </div>
           </div>
         </div>
@@ -17,4 +17,4 @@ const ProfilePanel = () => {
   );
 };
 
-export default ProfilePanel;
+export default Notifications;

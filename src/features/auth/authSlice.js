@@ -3,7 +3,7 @@ import axios from "axios";
 
 const authSlice = createSlice({
   name: "auth",
-  initialState: { user: null, token: null, role: null },
+  initialState: { user: null, token: null, role: null, lang: "en" },
   reducers: {
     setCredentials: (state, action) => {
       const { user, accessToken, role } = action.payload;
@@ -16,16 +16,21 @@ const authSlice = createSlice({
       state.token = null;
       state.role = null;
     },
+    setLanguage: (state, action) => {
+      state.lang = action.payload;
+    },
   },
 });
 
-export const { setCredentials, resetCredentials } = authSlice.actions;
+export const { setCredentials, resetCredentials, setLanguage } =
+  authSlice.actions;
 
 export default authSlice.reducer;
 
 export const selectCurrentUser = (state) => state.auth.user;
 export const selectCurrentToken = (state) => state.auth.token;
 export const selectCurrentRole = (state) => state.auth.role;
+export const selectLang = (state) => state.auth.lang;
 
 // export const getPlanningList = () => (dispatch) => {
 //   axios
